@@ -1,5 +1,5 @@
-import { TextField as TextFieldCustom } from "@mui/material";
-import {InputAdornment} from "@mui/material";
+
+import{ TextField as TextFieldCustom , InputAdornment} from "@material-ui/core";
 import {useState} from 'react'
 
 interface TextfieldProps {
@@ -51,6 +51,7 @@ const TextField = ({
     <TextFieldCustom
       label={label}
       disabled={disabled}
+      variant="outlined"
       value={inputValue}
       onChange={(event) =>setInputValue(event?.target.value)}
       fullWidth={fullWidth}

@@ -7,8 +7,7 @@ const meta = {
   component: Page,
   parameters: {
     layout: 'fullscreen',
-  },
-  decorators: [StoryRouter()] 
+  }
 } satisfies Meta<typeof Page>;
 
 export default meta;

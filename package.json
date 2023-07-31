@@ -23,9 +23,11 @@
     "@storybook/addon-styling": "^1.3.4",
     "@storybook/manager-api": "^7.1.1",
     "@storybook/theming": "^7.1.1",
+    "clsx": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.14.2"
+    "react-router-dom": "^6.14.2",
+    "storybook-addon-material-ui": "^0.9.0-alpha.24"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.1.1",

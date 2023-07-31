@@ -21,20 +21,20 @@ const Page = ({ title, loading, disableHeader = false, disableBreadcrumbs = fals
     const classes = useStyles();
 
     const getBreadCrumbs = () => {
-        const pathnames = ['Home' , 'Page' , 'Detail']
+        const pathnames = [ 'Page' , 'Detail']
 
         return (
             <Breadcrumbs separator="›" aria-label="breadcrumb">
-                <Link underline="hover" component={RouterLink} color="inherit">
+                <Typography style={{display: 'flex' , color: 'inherit', cursor: 'pointer'}} >
                     <HomeOutlinedIcon />
-                </Link>
+                </Typography>
                 {pathnames.map((pathname, i) => {
                     const first = i === 0;
                     const last = i === pathnames.length - 1;
 
                     if (first) {
                         return (
-                            <Typography className={classes.active} key={i}>
+                            <Typography className={classes.active} key={i} style={{cursor: 'pointer'}}>
                                 {pathname}
                             </Typography>
                         );
@@ -42,7 +42,7 @@ const Page = ({ title, loading, disableHeader = false, disableBreadcrumbs = fals
 
                     if (last) {
                         return (
-                            <Typography className={classes.active} key={i}>
+                            <Typography className={classes.active} key={i} style={{cursor: 'pointer'}}>
                                 {pathname}
                             </Typography>
                         );
@@ -50,9 +50,9 @@ const Page = ({ title, loading, disableHeader = false, disableBreadcrumbs = fals
 
 
                     return (
-                        <Link underline="hover" key={i} component={RouterLink} color="inherit">
+                        <a >
                             {pathname}
-                        </Link>
+                        </a>
                     );
                 })}
             </Breadcrumbs>
@@ -72,10 +72,13 @@ const Page = ({ title, loading, disableHeader = false, disableBreadcrumbs = fals
                     {!disableHeader && (
                         <Box mb={2}>
                             <Typography gutterBottom variant="h4">
-                              title
+                              Title
                             </Typography>
                         </Box>
                     )}
+                    <Box mb={5}>
+                        <hr />
+                    </Box>
                     <Box mb={5}>Page Content</Box>
                 </Container>
             )}
