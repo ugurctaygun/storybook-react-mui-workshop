@@ -63,12 +63,6 @@ const CardView = ({ actionArea , cardHeader }) => {
   const classes = useStyles();
   return (
     <Box>
-      {/* <StyledCard variant="outlined">
-        <Box bgcolor="background.default">header</Box>
-        <Divider />
-        <CardActionArea disabled={false}>content</CardActionArea>
-      
-      </StyledCard> */}
       <Card>
         <CardHeader title={'testo'}></CardHeader>
         <CardContent>
