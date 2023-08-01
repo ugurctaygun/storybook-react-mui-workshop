@@ -7,6 +7,9 @@ const meta = {
   component: TextField,
   title: "Design System/Components/Text Field",
   tags: ["autodocs"],
+  parameters: {
+    layout: 'centered',
+  },
 } satisfies Meta<typeof TextField>;
 
 export default meta;

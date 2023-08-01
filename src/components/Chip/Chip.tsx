@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import Chip from '@material-ui/core/Chip';
 import clsx from 'clsx';

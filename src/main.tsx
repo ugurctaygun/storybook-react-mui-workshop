@@ -1,13 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
-import { BrowserRouter } from "react-router-dom";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import { createTheme } from "./theme";
+import AppDecorator from "./components/AppDecorator";
+import { BrowserRouter, Routes } from "react-router-dom";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
+createRoot(document.getElementById("root")!).render(
+  <BrowserRouter>
+    <Routes>
+      <AppDecorator {...{ createTheme, selectedTheme: "light" }}>
+        <App />
+      </AppDecorator>
+    </Routes>
+  </BrowserRouter>
 );

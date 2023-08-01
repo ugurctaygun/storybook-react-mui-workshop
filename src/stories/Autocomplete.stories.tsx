@@ -6,7 +6,10 @@ import Autocomplete from '../components/Inputs/Autocomplete';
 const meta = {
   component: Autocomplete,
   title: "Design System/Components/Autocomplete",
-  tags: ["autodocs"],
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
 } satisfies Meta<typeof Autocomplete>;
 
 export default meta;
