@@ -5,6 +5,7 @@ import { Breadcrumbs, Link, Typography, Container, Box } from "@mui/material";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import { makeStyles } from "@material-ui/styles";
 import BigBang from "../Animations/BigBang";
+import BreadCrumbs from "../BreadCrumbs";
 
 interface PageProps {
   /**
@@ -30,41 +31,6 @@ const Page = ({
   disableBreadcrumbs = false,
   children = null,
 }): PageProps => {
-  const getBreadCrumbs = () => {
-    const pathnames = ["Page", "Detail"];
-
-    return (
-      <Breadcrumbs separator="›" aria-label="breadcrumb">
-        <Typography
-          style={{ display: "flex", color: "inherit", cursor: "pointer" }}
-        >
-          <HomeOutlinedIcon />
-        </Typography>
-        {pathnames.map((pathname, i) => {
-          const first = i === 0;
-          const last = i === pathnames.length - 1;
-
-          if (first) {
-            return (
-              <Typography key={i} style={{ cursor: "pointer" }}>
-                {pathname}
-              </Typography>
-            );
-          }
-
-          if (last) {
-            return (
-              <Typography key={i} style={{ cursor: "pointer" }}>
-                {pathname}
-              </Typography>
-            );
-          }
-
-          return <a>{pathname}</a>;
-        })}
-      </Breadcrumbs>
-    );
-  };
 
   return (
     <>
@@ -83,7 +49,7 @@ const Page = ({
       ) : (
         <Container maxWidth={false}>
           <Box mt={2} mb={4} height={!disableBreadcrumbs ? 21 : "auto"}>
-            {!disableBreadcrumbs && getBreadCrumbs()}
+            {!disableBreadcrumbs && <BreadCrumbs />}
           </Box>
           {!disableHeader && (
             <Box mt={2} mb={2}>
