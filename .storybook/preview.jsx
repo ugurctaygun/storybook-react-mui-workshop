@@ -6,7 +6,10 @@ export const decorators = [
   (Story , context) => (
     <AppDecorator {...{ createTheme , selectedTheme : context.globals.theme }}>
       <React.StrictMode>
+        <div style={{margin: '50px 0'}}>
         <Story />
+        </div>
+        
       </React.StrictMode>
     </AppDecorator>
   ),

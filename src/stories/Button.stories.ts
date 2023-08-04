@@ -13,6 +13,7 @@ const meta = {
   argTypes: {
     color: { control: 'radio', options: ['primary','secondary', 'error', 'success', 'warning']},
     variant: { control: 'radio', options: ['text', 'outlined','contained']},
+    type: { control: 'radio', options: ['default', 'add','group']},
   },
 } satisfies Meta<typeof Button>;
 
@@ -23,6 +24,7 @@ export const Primary: Story = {
   args: {
     label: 'Button',
     variant: 'contained',
-    color: 'primary'
+    color: 'primary',
+    type: 'default'
   },
 };
