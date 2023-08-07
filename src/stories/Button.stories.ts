@@ -28,3 +28,48 @@ export const Primary: Story = {
     type: 'default'
   },
 };
+
+export const Warning: Story = {
+  args: {
+    label: 'Validate',
+    variant: 'outlined',
+    color: 'warning',
+    type: 'default'
+  },
+};
+
+export const Error: Story = {
+  args: {
+    label: 'Reject',
+    variant: 'outlined',
+    color: 'error',
+    type: 'default'
+  },
+};
+
+export const Add: Story = {
+  args: {
+    label: 'Add New',
+    color: 'primary',
+    type: 'add'
+  },
+};
+
+export const Delete: Story = {
+  args: {
+    label: 'Delete',
+    color: 'error',
+    variant: 'outlined',
+    type: 'default',
+    icon : true
+  },
+};
+
+export const Group: Story = {
+  args: {
+    label: 'Button Group',
+    color: 'primary',
+    type: 'group'
+  },
+};
+

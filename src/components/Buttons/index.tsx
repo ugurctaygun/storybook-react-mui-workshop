@@ -1,6 +1,7 @@
 import { Button as MUIButton, Fab } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import ButtonGroup from "./ButtonGroup";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 interface ButtonProps {
   /**
@@ -33,7 +34,7 @@ interface ButtonProps {
   /**
    * Button icon
    */
-  icon?: string;
+  icon?: boolean;
   /**
    * Button type
    */
@@ -51,7 +52,7 @@ export const Button = ({
   size = "medium",
   color,
   disabled,
-  icon,
+  icon = false,
   label,
   variant,
   type,
@@ -66,7 +67,7 @@ export const Button = ({
             disabled={disabled}
             color={color}
             size={size}
-            startIcon={icon}
+            startIcon={icon && <DeleteIcon />}
             disableElevation
           >
             {label}
@@ -75,14 +76,12 @@ export const Button = ({
         break;
       case "add":
         return (
-          <Fab aria-label="Add" variant="extended" color="primary">
+          <Fab aria-label="Add" variant="extended" color={color}>
             <AddIcon /> ADD NEW
           </Fab>
         );
-        break;
       case "group":
         return <ButtonGroup />;
-        break;
       default:
         break;
     }
