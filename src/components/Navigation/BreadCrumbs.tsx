@@ -1,15 +1,11 @@
-import { Breadcrumbs as MUIBreadcrumbs, Typography} from "@mui/material";
+import { Breadcrumbs, Typography} from "@mui/material";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 
-interface BreadCrumbProps {
-}
-
-const BreadCrumbs = ({
-}): BreadCrumbProps => {
+const BreadCrumbs = ({}) => {
     const pathnames = ["Page", "Detail"];
 
     return (
-      <MUIBreadcrumbs separator="›" aria-label="breadcrumb">
+      <Breadcrumbs separator="›" aria-label="breadcrumb">
         <Typography
           style={{ display: "flex", color: "inherit", cursor: "pointer" }}
         >
@@ -37,7 +33,7 @@ const BreadCrumbs = ({
 
           return <a>{pathname}</a>;
         })}
-      </MUIBreadcrumbs>
+      </Breadcrumbs>
     );
 };
 

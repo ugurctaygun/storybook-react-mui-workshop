@@ -17,6 +17,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default : Story = {
   args: {
-   tabs : ['Test 1' , 'Test 2' ,'Test 3']
+   tabs : [{label: 'Home' , hash:'home'}, {label: 'Detail' , hash:'detail'}]
   },
 };
