@@ -42,6 +42,7 @@ interface ButtonProps {
   /**
    * Optional click handler
    */
+  iconType?: "delete" | "copy";
   onClick?: () => void;
 }
 
@@ -56,6 +57,7 @@ export const Button = ({
   label,
   variant,
   type,
+  iconType = 'delete',
   ...props
 }: ButtonProps) => {
   const renderButton = (type: string) => {

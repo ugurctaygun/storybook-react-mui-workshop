@@ -1,22 +1,32 @@
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import TabNavigator from '../components/Navigation/TabNavigator';
+import {Navigation} from '../components/Navigation';
 
 const meta = {
-  component: TabNavigator,
+  component: Navigation,
   title: "Design System/Components/Navigation",
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs'],
-} satisfies Meta<typeof TabNavigator>;
+  argTypes: {
+    type: { control: 'select', options: ['tabs', 'breadcrumb']},
+    tabs: {  if: { arg: 'type', eq: 'tabs' },}
+  }
+} satisfies Meta<typeof Navigation>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default : Story = {
+export const Breadcrumbs : Story = {
   args: {
-   tabs : [{label: 'Home' , hash:'home'}, {label: 'Detail' , hash:'detail'}]
+   type: 'breadcrumb'
+  },
+};
+
+export const TabNavigation : Story = {
+  args: {
+   tabs : [{label: 'Home' , hash:'home'}, {label: 'Detail' , hash:'detail'}],
+   type: 'tabs'
   },
 };

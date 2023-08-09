@@ -11,9 +11,11 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    color: { control: 'radio', options: ['primary','secondary', 'error', 'success', 'warning']},
+    color: { control: 'select', options: ['primary','secondary', 'error', 'success', 'warning']},
     variant: { control: 'radio', options: ['text', 'outlined','contained']},
-    type: { control: 'radio', options: ['default', 'add','group']},
+    type: { control: 'select', options: ['default', 'add','group']},
+    icon : {control: 'boolean'},
+    iconType: {control : 'select' , if : {arg: 'icon'} , option: ['delete' , 'copy']}
   },
 } satisfies Meta<typeof Button>;
 
@@ -70,6 +72,9 @@ export const Group: Story = {
     label: 'Button Group',
     color: 'primary',
     type: 'group'
+  },
+  parameters: {
+    controls: { exclude: ['type'] },
   },
 };
 
