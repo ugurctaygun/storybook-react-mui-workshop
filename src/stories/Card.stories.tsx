@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import CardView from "../components/Card";
+import CustomCard from "../components/Card/CustomCard";
 
 const meta = {
   title: "Design System/Components/Card",
@@ -18,4 +19,11 @@ export const Primary: Story = {
   args: {
     actionArea: true,
   },
+};
+
+export const Test: Story = {
+  args: {
+    actionArea: false,
+  },
+  render: (args) => <CustomCard {...args} header={"adasd"} />,
 };
