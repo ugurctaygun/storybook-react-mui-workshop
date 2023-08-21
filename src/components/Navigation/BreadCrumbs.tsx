@@ -1,5 +1,5 @@
 import { Breadcrumbs, Typography} from "@mui/material";
-import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 
 const BreadCrumbs = ({}) => {
     const pathnames = ["Page", "Detail"];

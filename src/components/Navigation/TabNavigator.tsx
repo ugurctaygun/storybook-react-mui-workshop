@@ -1,5 +1,5 @@
 
-import { Paper, Tabs, Tab } from '@material-ui/core/';
+import { Paper, Tabs, Tab } from "@mui/material";
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 type Tab = {

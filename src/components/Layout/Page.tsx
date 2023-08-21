@@ -2,8 +2,7 @@ import React, { FC, ReactComponentElement, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link as RouterLink, useParams } from "react-router-dom";
 import { Breadcrumbs, Link, Typography, Container, Box } from "@mui/material";
-import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
-import { makeStyles } from "@material-ui/styles";
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import BigBang from "../Animations/BigBang";
 import BreadCrumbs from "../BreadCrumbs";
 

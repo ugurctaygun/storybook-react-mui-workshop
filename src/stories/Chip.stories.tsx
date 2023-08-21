@@ -10,7 +10,7 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    color: { control: 'radio', options: ['primary', 'error', 'success', 'warning']},
+    color: { control: 'radio', options: ['primary', 'error', 'success', 'warning', 'info']},
     variant: { control: 'radio', options: ['default', 'outlined']},
   },
 } satisfies Meta<typeof Chip>;

@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import moment from 'moment';
-import { Avatar, Box, Link, Typography, Grid, Paper, withStyles, TextField, InputAdornment } from '@material-ui/core';
+import { Avatar, Box, Link, Typography, Grid, Paper, withStyles, TextField, InputAdornment } from "@mui/material";
 import ChipComponent from 'src/components/ChipComponent';
-import { deepPurple } from '@material-ui/core/colors';
+import { deepPurple } from "@mui/material/colors";
 import EditIcon from '@mui/icons-material/Edit';
 
 const GradientAvatar = withStyles((theme) => ({

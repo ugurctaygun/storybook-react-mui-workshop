@@ -1,6 +1,4 @@
-import { makeStyles } from '@material-ui/styles';
-import Chip from '@material-ui/core/Chip';
-import clsx from 'clsx';
+import Chip from "@mui/material/Chip";
 
 interface ChipProps {
     /**
@@ -10,15 +8,14 @@ interface ChipProps {
     /**
      * Background or border color of the chip
      */
-    color: string;
+    color: "primary" | "secondary" | "error" | "info" | "success" | "warning";
     /**
      * Decidec whether the chip is bordered or contained
      */
     variant: any;
   }
 
-const useStyles = makeStyles((_theme) => {
-    // const isLight = theme.palette.type === 'light';
+const test = () => {
  
     const red = '#c1090b';
     const redBg = '#fde9e7';
@@ -121,36 +118,18 @@ const useStyles = makeStyles((_theme) => {
             background: 'none !important'
         }
     };
-});
+};
 
 function ChipComponent({ variant = 'default', color = 'primary', label, ...rest } : ChipProps)  {
-    const classes = useStyles();
-
-
-    const rootClassName = clsx(
-        {
-            [classes.root]: true,
-            [classes[color as keyof typeof classes]]: !!color,
-            [classes[`${color}-${variant}` as keyof typeof classes]]: !!classes[`${color}-${variant}` as keyof typeof classes]
-        }
-    );
 
     return (
         <Chip
-            className={rootClassName}
+            color={color}
             variant={variant}
             label={label}
         ></Chip>
     );
 }
 
-// ChipComponent.propTypes = {
-//     avatar: PropTypes.object,
-//     label: PropTypes.string,
-//     variant: PropTypes.oneOf(['default', 'outlined']),
-//     className: PropTypes.string,
-//     color: PropTypes.oneOf(['default', 'red', 'blue', 'green', 'yellow', 'orange', 'gray', 'purple']),
-//     align: PropTypes.string
-// };
 
 export default ChipComponent;

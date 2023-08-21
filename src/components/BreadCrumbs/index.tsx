@@ -1,5 +1,5 @@
 import { Breadcrumbs as MUIBreadcrumbs, Typography} from "@mui/material";
-import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 
 interface BreadCrumbProps {
 }

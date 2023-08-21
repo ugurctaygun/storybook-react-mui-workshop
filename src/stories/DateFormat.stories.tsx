@@ -1,25 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Header } from './Header';
+import DateFormat from '../components/Formats/DateFormat';
 
 const meta = {
   title: 'Formatting Standards/Date',
-  component: Header,
+  component: DateFormat,
   tags: ['autodocs'],
   parameters: {
-    layout: 'fullscreen',
+    layout: 'centered',
   },
-} satisfies Meta<typeof Header>;
+} satisfies Meta<typeof DateFormat>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const LoggedIn: Story = {
+export const DefaultDate: Story = {
   args: {
-    user: {
-      name: 'Jane Doe',
-    },
   },
 };
 
-export const LoggedOut: Story = {};

@@ -1,5 +1,4 @@
 import React from "react";
-import { withStyles, makeStyles } from "@material-ui/styles";
 import {
   Card,
   CardActionArea,
@@ -7,38 +6,35 @@ import {
   Box,
   Grid,
   Divider,
-} from "@material-ui/core";
+} from "@mui/material";
 import { CardContent, CardHeader } from "@mui/material";
 
 interface CustomCardProps {
-    /**
-     * Label value of the chip
-     */
-    header?: string;
-  }
+  /**
+   * Label value of the chip
+   */
+  header?: string;
+  /**
+   * Label value of the chip
+   */
+  actionArea?: boolean;
+}
 
-
-const useStyles = makeStyles((theme) => ({
-  bgAction: {
-    background: "#f5f5f5",
-  },
-}));
-
-const CustomCard
- = ({ actionArea , cardHeader , header = 'test' } : CustomCardProps) => {
-  const classes = useStyles();
+const CustomCard = ({
+  actionArea = true,
+  header = "test",
+}: CustomCardProps) => {
   return (
     <Box>
       <Card>
         <CardHeader title={header}></CardHeader>
-        <CardContent>
-          Content
-        </CardContent>
-        {actionArea && <CardActions className={classes.bgAction}></CardActions>}
+        <CardContent>Content</CardContent>
+        {actionArea && (
+          <CardActions style={{ background: "#f5f5f5" }}></CardActions>
+        )}
       </Card>
     </Box>
   );
 };
 
-export default CustomCard
-;
+export default CustomCard;

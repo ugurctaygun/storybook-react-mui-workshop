@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { makeStyles } from '@material-ui/styles';
-import { Typography, Button, useTheme, useMediaQuery } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import { Typography, Button, useTheme, useMediaQuery } from "@mui/material";
 import Page from 'src/components/Page';
 import { useTranslation } from 'react-i18next';
 import HelpIcon from '@material-ui/icons/Help';
