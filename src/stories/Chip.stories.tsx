@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Chip from '../components/Chip/Chip'
+import ChipComponent from '../components/Chip';
 
 const meta = {
   title: 'Design System/Components/Chip',
-  component: Chip,
+  component: ChipComponent,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   argTypes: {
-    color: { control: 'radio', options: ['primary', 'error', 'success', 'warning', 'info']},
+    color: { control: 'radio', options: ['primary', 'error', 'success', 'warning']},
     variant: { control: 'radio', options: ['default', 'outlined']},
   },
-} satisfies Meta<typeof Chip>;
+} satisfies Meta<typeof ChipComponent>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
