@@ -1,28 +1,15 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Link as RouterLink } from "react-router-dom";
-import moment from "moment";
+import { useEffect, useState, useRef } from "react";
 import {
   Avatar,
   Box,
-  Link,
   Typography,
   Grid,
   Paper,
-  withStyles,
   TextField,
   InputAdornment,
 } from "@mui/material";
 import ChipComponent from "../Chip";
-import { deepPurple } from "@mui/material/colors";
 import EditIcon from "@mui/icons-material/Edit";
-
-// const GradientAvatar = withStyles((theme) => ({
-//     root: {
-//         color: '#fff',
-//         backgroundColor: deepPurple[500],
-//         borderRadius: 50
-//     }
-// }))(Avatar);
 
 const comment = {
   CommentedBy: "User Name",
@@ -33,12 +20,46 @@ const comment = {
   CommentDisable: true,
 };
 
-const Comment = ({}) => {
+interface CommentProps {
+  /**
+   * Commenter name
+   */
+  CommentedBy: string;
+  /**
+   * Text value of the comment or chip status text
+   */
+  Comment: string;
+  /**
+   * Input error check
+   */
+  commentError?: string;
+  /**
+   * Displays commment value as a status chip
+   */
+  UseChipToDisplayComment: boolean;
+  /**
+   * Disabled comment
+   */
+  CommentDisable: boolean;
+  /**
+   * Editable status of comment component
+   */
+  isEditAble: boolean;
+}
+
+const Comment = ({
+  isEditAble = true,
+  CommentDisable = false,
+  UseChipToDisplayComment = false,
+  commentError = 'Error Text',
+  Comment = "Comment Text",
+  CommentedBy = "User Name",
+} : CommentProps) => {
   const [commentOpen, setCommentOpen] = useState(false);
-  const [userComment, setUserComment] = useState(comment.Comment);
+  const [userComment, setUserComment] = useState(Comment);
   const commentRef = useRef();
 
-  function handleClickOutside(event : any) {
+  function handleClickOutside(event: any) {
     if (commentRef.current && !commentRef.current.contains(event.target)) {
       setCommentOpen(false);
     }
@@ -64,7 +85,7 @@ const Comment = ({}) => {
     >
       <Grid item>
         <Avatar variant="rounded" style={{ borderRadius: "50%" }}>
-          {comment.CommentedBy.charAt(0).toUpperCase()}
+          {CommentedBy.charAt(0).toUpperCase()}
         </Avatar>
       </Grid>
 
@@ -77,9 +98,9 @@ const Comment = ({}) => {
                   <Box>
                     <Typography
                       color="textPrimary"
-                      style={{fontWeight: 'bold'}}
+                      style={{ fontWeight: "bold" }}
                     >
-                      {comment.CommentedBy}
+                      {CommentedBy}
                     </Typography>
                   </Box>
 
@@ -97,9 +118,8 @@ const Comment = ({}) => {
                       <TextField
                         id="outlined-basic"
                         multiline
-                        disabled={comment.CommentDisable}
+                        disabled={CommentDisable}
                         onChange={(e) => {
-                          console.log(e);
                           setUserComment(e.target.value);
                         }}
                         inputProps={{ maxLength: 250 }}
@@ -119,28 +139,26 @@ const Comment = ({}) => {
                         }}
                         fullWidth
                         value={userComment}
-                        error={comment.commentError}
                         style={{ width: "80%" }}
-                        helperText={comment.commentError}
                       />
                     ) : (
                       <Typography
                         variant="body1"
                         onClick={(e) => {
-                          comment.isEditAble && setCommentOpen(true);
+                          isEditAble && setCommentOpen(true);
                         }}
                         color="textPrimary"
                         style={{
                           width: "80%",
                           whiteSpace: "pre-wrap",
                           wordBreak: "break-all",
-                          display: 'flex',
-                          justifyContent: 'space-between'
+                          display: "flex",
+                          justifyContent: "space-between",
                         }}
                       >
-                        {comment.UseChipToDisplayComment === false &&
-                          comment.Comment}{" "}
-                        {comment.isEditAble && (
+                        {UseChipToDisplayComment === false &&
+                          userComment}{" "}
+                        {isEditAble && (
                           <EditIcon
                             style={{ cursor: "pointer" }}
                             onClick={() => {
@@ -161,11 +179,11 @@ const Comment = ({}) => {
                 >
                   <Grid item>
                     <Box>
-                      {comment.UseChipToDisplayComment === true && (
+                      {UseChipToDisplayComment === true && (
                         <ChipComponent
-                          color="secondary"
+                          color="warning"
                           variant={"default"}
-                          label={comment.Comment}
+                          label={Comment}
                         />
                       )}
                     </Box>
