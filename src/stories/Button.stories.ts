@@ -8,6 +8,84 @@ const meta = {
   component: Button,
   parameters: {
     layout: 'centered',
+    docs: {
+      source: {
+        code: `// Button
+import { Button , Fab } from "@mui/material";
+
+<Button
+  variant={variant}
+  disabled={disabled}
+  color={color}
+  size={size}
+  startIcon={icon && <DeleteIcon />}
+  disableElevation
+>
+  {label}
+</Button>
+
+// Button Group
+
+import ButtonGroup from '@mui/material/ButtonGroup';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
+
+<ButtonGroup variant="contained" ref={anchorRef} aria-label="split button">
+  <Button onClick={handleClick}>{options[selectedIndex]}</Button>
+  <Button
+    size="small"
+    aria-controls={open ? 'split-button-menu' : undefined}
+    aria-expanded={open ? 'true' : undefined}
+    aria-label="select merge strategy"
+    aria-haspopup="menu"
+    onClick={handleToggle}
+  >
+    <ArrowDropDownIcon />
+  </Button>
+</ButtonGroup>
+<Popper
+  sx={{
+    zIndex: 1,
+  }}
+  open={open}
+  anchorEl={anchorRef.current}
+  role={undefined}
+  transition
+  disablePortal
+>
+  {({ TransitionProps }) => (
+    <Grow
+      {...TransitionProps}
+      style={{
+        transformOrigin: 'center top' ,
+      }}
+    >
+      <Paper>
+        <ClickAwayListener onClickAway={handleClose}>
+          <MenuList id="split-button-menu" autoFocusItem>
+            {options.map((option, index) => (
+              <MenuItem
+                key={option}
+                disabled={index === 2}
+                selected={index === selectedIndex}
+                onClick={(event) => handleMenuItemClick(event, index)}
+              >
+                {option}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </ClickAwayListener>
+      </Paper>
+    </Grow>
+  )}
+</Popper>`,
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {

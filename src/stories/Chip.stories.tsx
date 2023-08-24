@@ -7,6 +7,17 @@ const meta = {
   component: ChipComponent,
   parameters: {
     layout: 'centered',
+    docs: {
+      source: {
+        code: `import Chip from "@mui/material/Chip";
+
+<Chip
+  color={color}
+  variant={variant}
+  label={label}>
+</Chip>`,
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+export  const  codeSnippet = `import { useEffect, useState, useRef } from "react";
 import {Avatar,Box,Typography,Grid,Paper,TextField,InputAdornment,} from "@mui/material";
 import ChipComponent from "../Chip";
 import EditIcon from "@mui/icons-material/Edit";
@@ -182,3 +182,4 @@ const Comment = ({
 };
 
 export default Comment;
+`
