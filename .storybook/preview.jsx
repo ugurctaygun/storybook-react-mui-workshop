@@ -1,6 +1,7 @@
 import { createTheme } from "../src/theme";
 import  AppDecorator from "../src/components/AppDecorator";
 import React from "react";
+import '../src/index.css';
 
 export const decorators = [
   (Story , context) => (
