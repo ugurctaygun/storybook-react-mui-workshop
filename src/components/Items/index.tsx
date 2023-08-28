@@ -25,13 +25,13 @@ const Items = () => {
             </Box>
           </Grid>
           <Grid item sm={6} md={2} lg={2} alignContent={"flex-start"}>
-            <Box pr={-1}>
-              <Typography variant="h6">Unit</Typography>
+            <Box  style={{marginLeft: '-8px'}}>
+              <Typography variant="h6">Cost</Typography>
             </Box>
           </Grid>
           <Grid item sm={6} md={2} lg={2} alignContent={"flex-start"}>
-            <Box pr={-1}>
-              <Typography variant="h6">Cost</Typography>
+            <Box style={{marginLeft: '-8px'}}>
+              <Typography variant="h6">Unit</Typography>
             </Box>
           </Grid>
           <Grid item sm={6} md={2} lg={2} alignContent={"flex-start"}>
@@ -41,7 +41,12 @@ const Items = () => {
           </Grid>
         </Grid>
       </Paper>
+      <Box>
       <Item />
+      <Item />
+      <Item />
+      </Box>
+    
       <Paper className="itemsHeader">
         <Grid sx={{display: 'flex' , justifyContent: 'flex-end' , paddingRight : '20px'}}>
           <Box>

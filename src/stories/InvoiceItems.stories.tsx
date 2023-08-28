@@ -4,7 +4,7 @@ import Items from "../components/Items";
 
 const meta = {
   component: Items,
-  title: "Design System/Layout/Items",
+  title: "Layout/Invoice Items",
   parameters: {
     layout: "centered",
   },

@@ -5,7 +5,7 @@ import Autocomplete from '../components/Inputs/Autocomplete';
 
 const meta = {
   component: Autocomplete,
-  title: "Design System/Components/Autocomplete",
+  title: "Components/Inputs/Autocomplete",
   parameters: {
     layout: 'centered',
   },

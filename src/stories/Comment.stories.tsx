@@ -5,7 +5,7 @@ import {codeSnippet} from "../components/Comment/snippet";
 
 const meta = {
   component: Comment,
-  title: "Design System/Components/Comment",
+  title: "Components/Data Display/Comment",
   parameters: {
     layout: "centered",
     docs: {

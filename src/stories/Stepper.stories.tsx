@@ -5,7 +5,7 @@ import Steps from '../components/Stepper';
 
 const meta = {
   component: Steps,
-  title: "Design System/Components/Stepper",
+  title: "Components/Data Display/Stepper",
   parameters: {
     layout: 'centered',
   },

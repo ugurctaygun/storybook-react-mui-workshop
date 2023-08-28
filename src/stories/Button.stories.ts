@@ -4,7 +4,7 @@ import {Button} from '../components/Buttons'
 
 
 const meta = {
-  title: 'Design System/Components/Button',
+  title: 'Components/Inputs/Button',
   component: Button,
   parameters: {
     layout: 'centered',

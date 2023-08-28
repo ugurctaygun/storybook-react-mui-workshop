@@ -5,7 +5,7 @@ import DisplayField from '../components/DisplayField';
 
 const meta = {
   component: DisplayField,
-  title: "Design System/Components/Display Field",
+  title: "Components/Data Display/Display Field",
   parameters: {
     layout: 'centered',
   },

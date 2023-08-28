@@ -5,7 +5,7 @@ import Comments from '../components/Comments';
 
 const meta = {
   component: Comments,
-  title: "Design System/Layout/Comments",
+  title: "Layout/Comments",
   parameters: {
     layout: 'centered',
   },

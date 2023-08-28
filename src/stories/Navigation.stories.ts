@@ -5,7 +5,7 @@ import {Navigation} from '../components/Navigation';
 
 const meta = {
   component: Navigation,
-  title: "Design System/Components/Navigation",
+  title: "Components/Navigation",
   parameters: {
     layout: 'centered',
   },

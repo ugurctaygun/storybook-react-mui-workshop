@@ -5,7 +5,7 @@ import TextField from '../components/Inputs/TextField';
 
 const meta = {
   component: TextField,
-  title: "Design System/Components/Text Field",
+  title: "Components/Inputs/Text Field",
   tags: ["autodocs"],
   parameters: {
     layout: 'centered',

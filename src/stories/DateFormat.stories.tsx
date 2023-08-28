@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import DateFormat from '../components/Formats/DateFormat';
 
 const meta = {
-  title: 'Formatting Standards/Date',
+  title: 'Components/Data Display/Date',
   component: DateFormat,
   tags: ['autodocs'],
   parameters: {

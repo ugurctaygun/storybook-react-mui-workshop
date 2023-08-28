@@ -71,7 +71,7 @@ const Display = ({
         <Checkbox style={{padding: '0' ,paddingRight: 15, marginBottom: 3}} size="small" disableRipple />
       </Box>
 
-      <Grid container wrap={mobileDevice ? "wrap" : "nowrap"} spacing={0}>
+      <Grid container wrap={mobileDevice ? "wrap" : "nowrap"} spacing={0} >
         <Grid
           container
           item
@@ -83,7 +83,7 @@ const Display = ({
             container
             item
             xs={12}
-            style={{ padding: mobileDevice ? "0 30px" : "0" }}
+            style={{ padding: mobileDevice ? "0 30px" : "0 15px 0 0" ,display: 'flex' , justifyContent: 'space-between'}}
           >
             <Grid item xs={6} md={1}>
               {mobileDevice && (
@@ -95,7 +95,7 @@ const Display = ({
             </Grid>
 
             <Grid item xs={6} md={2}>
-              <Box pl={mobileDevice ? 3 : 1} style={{ width: "100%" }}>
+              <Box pl={mobileDevice ? 3 : 0} style={{ width: "100%" }}>
                 {mobileDevice && (
                   <Typography style={{ margin: "5px 0" }} variant="h6">
                    Description
@@ -125,18 +125,9 @@ const Display = ({
                 </Typography>
               </Box>
             </Grid>
-            <Grid item xs={6} md={2}>
-              <Box pl={mobileDevice ? 3 : 4}>
-                {mobileDevice && (
-                  <Typography style={{ margin: "5px 0" }} variant="h6">
-                    Unit
-                  </Typography>
-                )}
-                <Typography data-cy="poItemsListUnit">{item?.Unit}</Typography>
-              </Box>
-            </Grid>
+         
             <Grid item xs={6} md={2} style={{ whiteSpace: "pre" }}>
-              <Box pl={mobileDevice ? 0 : 4}>
+              <Box pl={mobileDevice ? 0 : 2}>
                 {mobileDevice && (
                   <Typography
                     style={{ margin: "5px 0", whiteSpace: "pre" }}
@@ -158,6 +149,16 @@ const Display = ({
                     suffix={" " + "TL"}
                   />
                 </Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={6} md={2}>
+              <Box pl={mobileDevice ? 3 : 4}>
+                {mobileDevice && (
+                  <Typography style={{ margin: "5px 0" }} variant="h6">
+                    Unit
+                  </Typography>
+                )}
+                <Typography data-cy="poItemsListUnit">{item?.Unit}</Typography>
               </Box>
             </Grid>
             <Grid
@@ -200,7 +201,7 @@ const Display = ({
           item
           style={{
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "space-between",
             margin: mobileDevice ? "15px auto 0px auto" : "0",
           }}
         >
