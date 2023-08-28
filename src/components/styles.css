@@ -12,13 +12,18 @@ export const paperStyle = {
 }, */
 
 .paperStyle {
-    margin: 15px auto ;
     padding:  15px 20px;
-    border-radius: 0;
+    border-radius: 0 !important;
 }
 .paperStyle:hover {
-    background-color: grey;
+    background-color: rgba(0, 0, 0, 0.04);
     cursor: pointer;
+}
+
+.itemsHeader {
+    padding: 10px 5px;
+    display: 'flex';
+    border-radius: 0 !important;
 }
 
 /* // export default makeStyles((theme) => ({

@@ -6,14 +6,15 @@ import {
   IconButton,
   Tooltip,
   useMediaQuery,
-  useTheme,
+  useTheme, Menu , MenuItem , Checkbox
 } from "@mui/material";
 import "../../styles.css";
 import { NumericFormat } from "react-number-format";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { CheckBox, FileCopyOutlined } from "@mui/icons-material/";
+import { FileCopyOutlined } from "@mui/icons-material/";
 import { useEffect, useState } from "react";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 interface itemType {
   ID: string;
@@ -23,6 +24,8 @@ interface itemType {
   Unit: string;
   Amount: number;
 }
+
+const options = ["None", "Atria", "Callisto"];
 
 const Display = ({
   item = {
@@ -38,10 +41,19 @@ const Display = ({
   handleCopyItem = () => {},
   itemIndex = 0,
   itemIsDısabled = false,
+  actionType = 'Icons'
 }) => {
   const [itemValue, setItemValue] = useState(0);
   const theme = useTheme();
   const mobileDevice = useMediaQuery(theme.breakpoints.down("sm"));
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   useEffect(() => {
     setItemValue(item?.Cost * item?.Quantity);
   }, [item?.Cost, item?.Quantity]);
@@ -56,7 +68,7 @@ const Display = ({
       }}
     >
       <Box sx={{ mr: "15px" }}>
-        <CheckBox />
+        <Checkbox style={{padding: '0' ,paddingRight: 15, marginBottom: 3}} size="small" disableRipple />
       </Box>
 
       <Grid container wrap={mobileDevice ? "wrap" : "nowrap"} spacing={0}>
@@ -86,7 +98,7 @@ const Display = ({
               <Box pl={mobileDevice ? 3 : 1} style={{ width: "100%" }}>
                 {mobileDevice && (
                   <Typography style={{ margin: "5px 0" }} variant="h6">
-                    {t("po-item-des")}
+                   Description
                   </Typography>
                 )}
                 <Tooltip
@@ -163,7 +175,7 @@ const Display = ({
                     Amount
                   </Typography>
                 )}
-                <Typography data-cy="poItemsListValue">
+                <Typography data-cy="poItemsListValue"   style={{ whiteSpace: "pre" }}>
                   <NumericFormat
                     value={itemValue}
                     decimalScale={2}
@@ -177,7 +189,7 @@ const Display = ({
                           : itemValue}
                       </>
                     )}
-                    suffix={"tl"}
+                    suffix={" TL"}
                   />
                 </Typography>
               </Box>
@@ -196,46 +208,89 @@ const Display = ({
             height={"100%"}
             style={{ display: "flex", minWidth: mobileDevice ? "150px" : "0" }}
           >
-            <IconButton
-              disableRipple
-              disabled={itemIsDısabled}
-              color={"primary"}
-              size="small"
-              aria-label=""
-              style={{ display: "contents" }}
-              onClick={() => {
-                handleCopyItem();
-              }}
-              data-cy="poItemsListCopyButton"
-            >
-              <FileCopyOutlined fontSize={"small"} />
-            </IconButton>
-            <IconButton
-              disableRipple
-              disabled={itemIsDısabled}
-              color={"primary"}
-              size="small"
-              aria-label=""
-              style={{ display: "contents" }}
-              onClick={() => {
-                handleEditItem();
-              }}
-              data-cy="poItemsListEditButton"
-            >
-              <EditIcon fontSize={"small"} />
-            </IconButton>
-            <IconButton
-              disableRipple
-              disabled={itemIsDısabled}
-              size="small"
-              aria-label=""
-              style={{ display: "contents" }}
-              onClick={() => {
-                // handleDeleteItem(index);
-              }}
-            >
-              <DeleteIcon fontSize={"small"} />
-            </IconButton>
+            {actionType === "Icon" ? (
+              <>
+                {" "}
+                <IconButton
+                  disableRipple
+                  disabled={itemIsDısabled}
+                  color={"primary"}
+                  size="small"
+                  aria-label=""
+                  style={{ display: "contents" }}
+                  onClick={() => {
+                    handleCopyItem();
+                  }}
+                  data-cy="poItemsListCopyButton"
+                >
+                  <FileCopyOutlined fontSize={"small"} />
+                </IconButton>
+                <IconButton
+                  disableRipple
+                  disabled={itemIsDısabled}
+                  color={"primary"}
+                  size="small"
+                  aria-label=""
+                  style={{ display: "contents" }}
+                  onClick={() => {
+                    handleEditItem();
+                  }}
+                  data-cy="poItemsListEditButton"
+                >
+                  <EditIcon fontSize={"small"} />
+                </IconButton>
+                <IconButton
+                  disableRipple
+                  disabled={itemIsDısabled}
+                  size="small"
+                  aria-label=""
+                  style={{ display: "contents" }}
+                  onClick={() => {
+                    // handleDeleteItem(index);
+                  }}
+                >
+                  <DeleteIcon fontSize={"small"} />
+                </IconButton>
+              </>
+            ) : (
+              <>
+                <IconButton
+                  aria-label="more"
+                  id="long-button"
+                  disableRipple
+                  size="small"
+                  aria-controls={open ? "long-menu" : undefined}
+                  aria-expanded={open ? "true" : undefined}
+                  aria-haspopup="true"
+                  onClick={handleClick}
+                >
+                  <MoreVertIcon />
+                </IconButton>
+                <Menu
+                  id="long-menu"
+                  MenuListProps={{
+                    "aria-labelledby": "long-button",
+                  }}
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  PaperProps={{
+                    style: {
+                    },
+                  }}
+                >
+                  {options.map((option) => (
+                    <MenuItem
+                      key={option}
+                      selected={option === "Pyxis"}
+                      onClick={handleClose}
+                    >
+                      {option}
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </>
+            )}
           </Box>
         </Grid>
       </Grid>

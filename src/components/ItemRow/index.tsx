@@ -47,6 +47,10 @@ interface ItemProperties {
    * Handles
    */
   updateItem: Function;
+   /**
+   * Handles
+   */
+   actionType: "Icon" | "Menu";
 }
 
 const Item = ({
@@ -59,6 +63,7 @@ const Item = ({
   itemIndex,
   updateItem,
   itemIsDisabled,
+  actionType = "Icon"
 }: ItemProperties) => {
   return (
     <>
@@ -69,6 +74,7 @@ const Item = ({
           handleCopyItem={handleCopyItem}
           itemIndex={itemIndex}
           itemIsDisabled={itemIsDisabled}
+          actionType={actionType}
         />
       {/* {isEdit ? (
         <Edit

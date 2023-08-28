@@ -1,24 +1,22 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Item from "../components/ItemRow";
+import Items from "../components/Items";
 
 const meta = {
-  component: Item,
-  title: "Design System/Components/Invoice Items Row",
+  component: Items,
+  title: "Design System/Layout/Items",
   parameters: {
     layout: "centered",
   },
   argTypes: {
-    actionType: { control: 'radio', options: ['Icon', 'Menu']},
   },
   tags: ["autodocs"],
-} satisfies Meta<typeof Item>;
+} satisfies Meta<typeof Items>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    actionType: "Icon"
   },
 };
