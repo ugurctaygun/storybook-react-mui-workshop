@@ -4,7 +4,7 @@ import Item from "../components/ItemRow";
 
 const meta = {
   component: Item,
-  title: "Components/Data Display/Invoice Items Row",
+  title: "Components/Data Display/Row",
   parameters: {
     layout: "centered",
   },

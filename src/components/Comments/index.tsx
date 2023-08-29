@@ -15,7 +15,6 @@ import Comment from "../Comment";
 
 const Comments = () => {
   return (
-    <>
       <Grid xs={12} style={{ minWidth: 500 , paddingBottom: 25}}>
         <Box mb={2}>
           <Card>
@@ -73,19 +72,6 @@ const Comments = () => {
           </Card>
         </Box>
       </Grid>
-      <Box
-        style={{
-          display: "flex",
-          borderTop: "1px solid rgba(0, 0, 0, 0.12)",
-          position: "fixed",
-          bottom: 0,
-          width: '100%',
-          justifyContent: 'flex-end'
-        }}
-      >
-        <Button style={{marginTop: 15}} size="large">Submit</Button>
-      </Box>
-    </>
   );
 };
 

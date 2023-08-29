@@ -21,8 +21,9 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    color: { control: 'radio', options: ['primary', 'error', 'success', 'warning']},
+    color: { control: 'select', options: ['primary', 'error', 'success', 'warning']},
     variant: { control: 'radio', options: ['default', 'outlined']},
+    textTransform: { control: 'radio', options: ['initial', 'capitalize' , 'uppercase']},
   },
 } satisfies Meta<typeof ChipComponent>;
 

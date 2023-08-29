@@ -15,7 +15,6 @@ interface TabNavigatorProps {
   }
 
 const TabNavigator = ({ tabs} : TabNavigatorProps)  => {
-    console.log(tabs)
     const location = useLocation();
     const activeTab = tabs.findIndex(item => item.hash === location.hash.replace('#', ''))
     return (

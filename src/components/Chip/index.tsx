@@ -10,9 +10,13 @@ interface ChipProps {
      */
     color: "primary" | "secondary" | "error" | "info" | "success" | "warning";
     /**
-     * Decidec whether the chip is bordered or contained
+     * Decides whether the chip is bordered or contained
      */
     variant: any;
+     /**
+     * Text display style
+     */
+    textTransform? : "uppercase" | "initial" | "capitalize";
   }
 
 const test = () => {
@@ -120,13 +124,14 @@ const test = () => {
     };
 };
 
-function ChipComponent({ variant = 'default', color = 'primary', label, ...rest } : ChipProps)  {
+function ChipComponent({ variant = 'default', color = 'primary', label, textTransform = 'initial' ,...rest } : ChipProps)  {
 
     return (
         <Chip
             color={color}
             variant={variant}
             label={label}
+            style={{textTransform: textTransform}}
         ></Chip>
     );
 }

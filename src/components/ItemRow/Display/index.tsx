@@ -28,20 +28,19 @@ interface itemType {
 const options = ["None", "Atria", "Callisto"];
 
 const Display = ({
-  item = {
-    ID: "1",
+  item  = {Amount: 3232,
     Cost: 2341,
-    Quantity: 3,
     Description: "New item order",
-    Unit: "CM",
-    Amount: 3232,
-  },
+    ID: "1",
+    Quantity: 3,
+    Unit: "CM",},
   handleEditItem = () => {},
   handleDeleteItem = () => {},
   handleCopyItem = () => {},
   itemIndex = 0,
-  itemIsDısabled = false,
-  actionType = 'Icons'
+  itemIsDisabled = false,
+  actionType = 'Icons',
+  handleMultiSelect = () => {}
 }) => {
   const [itemValue, setItemValue] = useState(0);
   const theme = useTheme();
@@ -65,10 +64,11 @@ const Display = ({
         marginBottom: mobileDevice ? "10px" : "0",
         minWidth: 900,
         display: "flex",
+        alignItems: 'center'
       }}
     >
       <Box sx={{ mr: "15px" }}>
-        <Checkbox style={{padding: '0' ,paddingRight: 15, marginBottom: 3}} size="small" disableRipple />
+        <Checkbox onChange={(event) => handleMultiSelect(item , event.target.checked)} style={{padding: '0' ,paddingRight: 15, marginBottom: 3}} size="small" disableRipple />
       </Box>
 
       <Grid container wrap={mobileDevice ? "wrap" : "nowrap"} spacing={0} >
@@ -83,7 +83,7 @@ const Display = ({
             container
             item
             xs={12}
-            style={{ padding: mobileDevice ? "0 30px" : "0 15px 0 0" ,display: 'flex' , justifyContent: 'space-between'}}
+            style={{ padding: mobileDevice ? "0 30px" : "0 15px 0 0" ,display: 'flex' ,alignItems: 'center', justifyContent: 'space-between'}}
           >
             <Grid item xs={6} md={1}>
               {mobileDevice && (
@@ -94,7 +94,7 @@ const Display = ({
               <Typography data-cy="poItemsListID">{item?.ID}</Typography>
             </Grid>
 
-            <Grid item xs={6} md={2}>
+            <Grid item xs={6} md={3}>
               <Box pl={mobileDevice ? 3 : 0} style={{ width: "100%" }}>
                 {mobileDevice && (
                   <Typography style={{ margin: "5px 0" }} variant="h6">
@@ -106,8 +106,8 @@ const Display = ({
                     item?.Description?.length > 20 ? item?.Description : ""
                   }
                 >
-                  <Typography data-cy="poItemsListDescription">
-                    {item?.Description}
+                  <Typography >
+                    {item?.Description?.length > 20 ? item?.Description?.substring(0,20) + ' ...' : item?.Description}
                   </Typography>
                 </Tooltip>
               </Box>
@@ -151,8 +151,8 @@ const Display = ({
                 </Typography>
               </Box>
             </Grid>
-            <Grid item xs={6} md={2}>
-              <Box pl={mobileDevice ? 3 : 4}>
+            <Grid item xs={6} md={1}>
+              <Box pl={mobileDevice ? 3 : 0}>
                 {mobileDevice && (
                   <Typography style={{ margin: "5px 0" }} variant="h6">
                     Unit
@@ -207,44 +207,41 @@ const Display = ({
         >
           <Box
             height={"100%"}
-            style={{ display: "flex", minWidth: mobileDevice ? "150px" : "0" }}
+            style={{ display: "flex",gap: '3px' , minWidth: mobileDevice ? "150px" : "0" }}
           >
             {actionType === "Icon" ? (
               <>
                 {" "}
                 <IconButton
                   disableRipple
-                  disabled={itemIsDısabled}
+                  disabled={itemIsDisabled}
                   color={"primary"}
                   size="small"
-                  aria-label=""
                   style={{ display: "contents" }}
                   onClick={() => {
                     handleCopyItem();
                   }}
-                  data-cy="poItemsListCopyButton"
                 >
                   <FileCopyOutlined fontSize={"small"} />
                 </IconButton>
                 <IconButton
                   disableRipple
-                  disabled={itemIsDısabled}
+                  disabled={itemIsDisabled}
                   color={"primary"}
                   size="small"
-                  aria-label=""
+                  aria-label="Edit"
                   style={{ display: "contents" }}
                   onClick={() => {
                     handleEditItem();
                   }}
-                  data-cy="poItemsListEditButton"
                 >
                   <EditIcon fontSize={"small"} />
                 </IconButton>
                 <IconButton
                   disableRipple
-                  disabled={itemIsDısabled}
+                  disabled={itemIsDisabled}
                   size="small"
-                  aria-label=""
+                  color={"error"}
                   style={{ display: "contents" }}
                   onClick={() => {
                     // handleDeleteItem(index);
@@ -260,6 +257,7 @@ const Display = ({
                   id="long-button"
                   disableRipple
                   size="small"
+                  style={{padding: 0}}
                   aria-controls={open ? "long-menu" : undefined}
                   aria-expanded={open ? "true" : undefined}
                   aria-haspopup="true"

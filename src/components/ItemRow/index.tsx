@@ -51,6 +51,7 @@ interface ItemProperties {
    * Handles
    */
    actionType: "Icon" | "Menu";
+   handleMultiSelect?: Function;
 }
 
 const Item = ({
@@ -63,7 +64,8 @@ const Item = ({
   itemIndex,
   updateItem,
   itemIsDisabled,
-  actionType = "Icon"
+  actionType = "Icon",
+  handleMultiSelect = () => {}
 }: ItemProperties) => {
   return (
     <>
@@ -75,6 +77,7 @@ const Item = ({
           itemIndex={itemIndex}
           itemIsDisabled={itemIsDisabled}
           actionType={actionType}
+          handleMultiSelect={handleMultiSelect}
         />
       {/* {isEdit ? (
         <Edit

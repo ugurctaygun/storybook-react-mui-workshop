@@ -18,6 +18,11 @@ export const decorators = [
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   layout: "fullscreen",
+  options: {
+    storySort: {
+      order: ['Components', ['Data Display' , 'Inputs' , 'Navigation'],'Layout' , ['Page','Comments','Invoice Items']],
+    },
+  },
 };
 
 export const globalTypes = {
