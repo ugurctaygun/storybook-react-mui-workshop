@@ -1,8 +1,5 @@
 import React, { FC, ReactComponentElement, useEffect } from "react";
-import PropTypes from "prop-types";
-import { Link as RouterLink, useParams } from "react-router-dom";
-import { Breadcrumbs, Link, Typography, Container, Box } from "@mui/material";
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import { Typography, Container, Box } from "@mui/material";
 import BigBang from "../Animations/BigBang";
 import BreadCrumbs from "../BreadCrumbs";
 
@@ -14,13 +11,13 @@ interface PageProps {
   /**
    * Value of theinput
    */
-  disableBreadcrumbs: Boolean;
+  disableBreadcrumbs?: Boolean;
   /**
    * Disable input interactivity
    */
-  disableHeader: Boolean;
-  loading: Boolean;
-  children: FC | null;
+  disableHeader?: Boolean;
+  loading?: Boolean;
+  children:any;
 }
 
 const Page = ({

@@ -9,7 +9,8 @@ const meta = {
     layout: "centered",
   },
   argTypes: {
-    actionType: { control: 'radio', options: ['Icon', 'Menu']},
+    actionType: { control: 'radio', options: ['Icons', 'Menu']},
+    hasMultiSelect: {control: 'boolean'}
   },
   tags: ["autodocs"],
 } satisfies Meta<typeof Item>;
@@ -19,6 +20,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    actionType: "Icon"
+    actionType: "Icons",
+    hasMultiSelect: false
   },
 };

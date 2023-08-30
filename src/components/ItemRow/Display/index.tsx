@@ -6,7 +6,10 @@ import {
   IconButton,
   Tooltip,
   useMediaQuery,
-  useTheme, Menu , MenuItem , Checkbox
+  useTheme,
+  Menu,
+  MenuItem,
+  Checkbox,
 } from "@mui/material";
 import "../../styles.css";
 import { NumericFormat } from "react-number-format";
@@ -28,19 +31,22 @@ interface itemType {
 const options = ["None", "Atria", "Callisto"];
 
 const Display = ({
-  item  = {Amount: 3232,
+  item = {
+    Amount: 3232,
     Cost: 2341,
     Description: "New item order",
     ID: "1",
     Quantity: 3,
-    Unit: "CM",},
+    Unit: "CM",
+  },
   handleEditItem = () => {},
   handleDeleteItem = () => {},
   handleCopyItem = () => {},
   itemIndex = 0,
   itemIsDisabled = false,
-  actionType = 'Icons',
-  handleMultiSelect = () => {}
+  actionType = "Icons",
+  handleMultiSelect = () => {},
+  hasMultiSelect = false,
 }) => {
   const [itemValue, setItemValue] = useState(0);
   const theme = useTheme();
@@ -64,14 +70,21 @@ const Display = ({
         marginBottom: mobileDevice ? "10px" : "0",
         minWidth: 900,
         display: "flex",
-        alignItems: 'center'
+        alignItems: "center",
       }}
     >
-      <Box sx={{ mr: "15px" }}>
-        <Checkbox onChange={(event) => handleMultiSelect(item , event.target.checked)} style={{padding: '0' ,paddingRight: 15, marginBottom: 3}} size="small" disableRipple />
+      {" "}
+      <Box sx={{ mr: "15px" , minWidth: '35px' }}>
+        {hasMultiSelect && (
+          <Checkbox
+            onChange={(event) => handleMultiSelect(item, event.target.checked)}
+            style={{ padding: "0", paddingRight: 15, marginBottom: 3 }}
+            size="small"
+            disableRipple
+          />
+        )}
       </Box>
-
-      <Grid container wrap={mobileDevice ? "wrap" : "nowrap"} spacing={0} >
+      <Grid container wrap={mobileDevice ? "wrap" : "nowrap"} spacing={0}>
         <Grid
           container
           item
@@ -83,7 +96,12 @@ const Display = ({
             container
             item
             xs={12}
-            style={{ padding: mobileDevice ? "0 30px" : "0 15px 0 0" ,display: 'flex' ,alignItems: 'center', justifyContent: 'space-between'}}
+            style={{
+              padding: mobileDevice ? "0 30px" : "0 15px 0 0",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
           >
             <Grid item xs={6} md={1}>
               {mobileDevice && (
@@ -98,7 +116,7 @@ const Display = ({
               <Box pl={mobileDevice ? 3 : 0} style={{ width: "100%" }}>
                 {mobileDevice && (
                   <Typography style={{ margin: "5px 0" }} variant="h6">
-                   Description
+                    Description
                   </Typography>
                 )}
                 <Tooltip
@@ -106,8 +124,10 @@ const Display = ({
                     item?.Description?.length > 20 ? item?.Description : ""
                   }
                 >
-                  <Typography >
-                    {item?.Description?.length > 20 ? item?.Description?.substring(0,20) + ' ...' : item?.Description}
+                  <Typography>
+                    {item?.Description?.length > 20
+                      ? item?.Description?.substring(0, 20) + " ..."
+                      : item?.Description}
                   </Typography>
                 </Tooltip>
               </Box>
@@ -125,7 +145,7 @@ const Display = ({
                 </Typography>
               </Box>
             </Grid>
-         
+
             <Grid item xs={6} md={2} style={{ whiteSpace: "pre" }}>
               <Box pl={mobileDevice ? 0 : 2}>
                 {mobileDevice && (
@@ -176,7 +196,10 @@ const Display = ({
                     Amount
                   </Typography>
                 )}
-                <Typography data-cy="poItemsListValue"   style={{ whiteSpace: "pre" }}>
+                <Typography
+                  data-cy="poItemsListValue"
+                  style={{ whiteSpace: "pre" }}
+                >
                   <NumericFormat
                     value={itemValue}
                     decimalScale={2}
@@ -207,9 +230,14 @@ const Display = ({
         >
           <Box
             height={"100%"}
-            style={{ display: "flex",gap: '3px' , minWidth: mobileDevice ? "150px" : "0" }}
+            style={{
+              display: "flex",
+              gap: "3px",
+              justifyContent: 'center',
+              minWidth: mobileDevice ? "150px" : "66px",
+            }}
           >
-            {actionType === "Icon" ? (
+            {actionType === "Icons" ? (
               <>
                 {" "}
                 <IconButton
@@ -257,7 +285,7 @@ const Display = ({
                   id="long-button"
                   disableRipple
                   size="small"
-                  style={{padding: 0}}
+                  style={{ padding: 0 }}
                   aria-controls={open ? "long-menu" : undefined}
                   aria-expanded={open ? "true" : undefined}
                   aria-haspopup="true"
@@ -274,8 +302,7 @@ const Display = ({
                   open={open}
                   onClose={handleClose}
                   PaperProps={{
-                    style: {
-                    },
+                    style: {},
                   }}
                 >
                   {options.map((option) => (
