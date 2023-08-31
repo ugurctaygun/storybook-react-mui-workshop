@@ -69,7 +69,6 @@ const Comments = ({ children }) => {
             </Box>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
               {children}
-              <Comment />
             </Box>
           </CardContent>
         </Card>

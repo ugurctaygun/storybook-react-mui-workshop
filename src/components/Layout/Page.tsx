@@ -26,7 +26,10 @@ const Page = ({
   disableHeader = false,
   disableBreadcrumbs = false,
   children = null,
+  ...rest
 }): PageProps => {
+
+  console.log(rest)
 
   return (
     <>

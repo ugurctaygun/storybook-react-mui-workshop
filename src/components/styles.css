@@ -25,6 +25,7 @@ export const paperStyle = {
     display: 'flex';
     border-radius: 0 !important;
     background-color: rgba(0, 0, 0, 0.04) !important;
+    border-bottom: none
 }
 
 /* // export default makeStyles((theme) => ({

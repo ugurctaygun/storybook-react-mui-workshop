@@ -2,7 +2,7 @@ import { Grid, Paper, Typography, Box } from "@mui/material";
 
 const TableHeader = () => {
     return (
-        <Paper className="itemsHeader">
+        <Paper className="itemsHeader" elevation={0}>
         <Grid container>
           <Grid
             item

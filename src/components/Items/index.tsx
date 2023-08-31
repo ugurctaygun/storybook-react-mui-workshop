@@ -1,10 +1,11 @@
-import { Grid, Paper, Typography, Box } from "@mui/material";
+import { Grid, Paper, Typography, Box, IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
 import Item from "../ItemRow";
 import "../styles.css";
 import { useState } from "react";
 import TableHeader from "./TableHeader";
+import ClearAllIcon from "@mui/icons-material/ClearAll";
 
 interface ItemsType {
   /**
@@ -41,7 +42,21 @@ const Items = ({ actionType = "Icons", hasMultiSelect = false }) => {
       Unit: "CM",
     },
   ]);
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([
+    {
+      Amount: 3232,
+      Cost: 645,
+      Description: "Office Supplies testing description length",
+      ID: "3",
+      Quantity: 3,
+      Unit: "CM",
+    },
+  ]);
+  const handleDeleteSelected = () => {
+    const updatedItems = items.filter((item) => !selectedItems.includes(item));
+    setItems(updatedItems);
+    setSelectedItems([]);
+  };
 
   const handleMultiSelect = (passedItem: any, selected: boolean) => {
     if (selected) {
@@ -56,20 +71,30 @@ const Items = ({ actionType = "Icons", hasMultiSelect = false }) => {
     }
   };
 
+  const handleClearMultiSelect = () => {
+    setSelectedItems([]);
+  };
+
   return (
-    <Grid>
+    <Grid style={{ minWidth: 900 }}>
       <TableHeader />
       <Box>
-        {items.map((item) => (
-          <Item
-            item={item}
-            key={item.ID}
-            handleMultiSelect={handleMultiSelect}
-            actionType={actionType}
-            hasMultiSelect={hasMultiSelect}
-            itemIsDisabled={selectedItems.length > 0}
-          />
-        ))}
+        {items.length > 0 ? (
+          items.map((item) => (
+            <Item
+              item={item}
+              key={item.ID}
+              handleMultiSelect={handleMultiSelect}
+              actionType={actionType}
+              hasMultiSelect={hasMultiSelect}
+              itemIsDisabled={selectedItems.length > 0}
+            />
+          ))
+        ) : (
+          <Box style={{ padding: 35, margin: "auto", textAlign: "center" }}>
+            <ClearAllIcon />
+          </Box>
+        )}
       </Box>
 
       <Paper className="itemsHeader" elevation={0}>
@@ -97,9 +122,22 @@ const Items = ({ actionType = "Icons", hasMultiSelect = false }) => {
             width: 250,
           }}
         >
-          <ClearIcon />
+          <IconButton
+            style={{ padding: 0, margin: 0 }}
+            onClick={handleClearMultiSelect}
+          >
+            <ClearIcon />
+          </IconButton>
+
           <Typography>{selectedItems.length} items selected</Typography>
-          <DeleteSweepIcon />
+
+          <IconButton
+            style={{ padding: 0, margin: 0 }}
+            color={"error"}
+            onClick={handleDeleteSelected}
+          >
+            <DeleteSweepIcon />
+          </IconButton>
         </Paper>
       )}
     </Grid>

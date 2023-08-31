@@ -20,9 +20,3 @@ export const DefaultDisplayField : Story = {
     value: 'Arçelik A.Ş'
   },
 };
-
-export const Disabled = (args) => <DisplayField {...args} />
-Disabled.args = {
-  label: "Company ",
-  value: ' A.Ş'
-}

@@ -32,9 +32,18 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    label: 'Chip',
+    label: 'Status Message',
     color: 'primary',
     variant: 'default'
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    label: 'Status Message',
+    color: 'primary',
+    variant: 'outlined',
+    textTransform: 'uppercase'
   },
 };
 
