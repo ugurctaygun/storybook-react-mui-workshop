@@ -6,6 +6,7 @@ import "../styles.css";
 import { useState } from "react";
 import TableHeader from "./TableHeader";
 import ClearAllIcon from "@mui/icons-material/ClearAll";
+import Actions from "./Actions";
 
 interface ItemsType {
   /**
@@ -15,7 +16,20 @@ interface ItemsType {
   hasMultiSelect?: boolean;
 }
 
-const Items = ({ actionType = "Icons", hasMultiSelect = false }) => {
+const itemTemplate =   {
+  Amount: 0,
+  Cost: 0,
+  Description: "New item",
+  ID: 0,
+  Quantity: 0,
+  Unit: null,
+}
+
+const Items = ({
+  actionType = "Icons",
+  hasMultiSelect = false,
+  viewTotal = false,
+}) => {
   const [items, setItems] = useState([
     {
       Amount: 3232,
@@ -42,21 +56,26 @@ const Items = ({ actionType = "Icons", hasMultiSelect = false }) => {
       Unit: "CM",
     },
   ]);
-  const [selectedItems, setSelectedItems] = useState([
-    {
-      Amount: 3232,
-      Cost: 645,
-      Description: "Office Supplies testing description length",
-      ID: "3",
-      Quantity: 3,
-      Unit: "CM",
-    },
-  ]);
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [itemChecked,setItemChecked] = useState(false)
   const handleDeleteSelected = () => {
     const updatedItems = items.filter((item) => !selectedItems.includes(item));
     setItems(updatedItems);
     setSelectedItems([]);
   };
+
+  const handleDeleteAll = () => {
+    setItems([]);
+  }
+  
+
+  const handleAddNewItem = () => {
+    const newItem = {
+      ...itemTemplate,
+      ID: Math.floor(Math.random() * 100),
+    };
+    setItems(prevItems => [...prevItems, newItem]);
+  }
 
   const handleMultiSelect = (passedItem: any, selected: boolean) => {
     if (selected) {
@@ -64,6 +83,7 @@ const Items = ({ actionType = "Icons", hasMultiSelect = false }) => {
         ...prevSelectedItems,
         passedItem,
       ]);
+      setItemChecked(true)
     } else {
       setSelectedItems((prevSelectedItems) =>
         prevSelectedItems.filter((item) => item !== passedItem)
@@ -73,10 +93,12 @@ const Items = ({ actionType = "Icons", hasMultiSelect = false }) => {
 
   const handleClearMultiSelect = () => {
     setSelectedItems([]);
+    setItemChecked(false)
   };
 
   return (
     <Grid style={{ minWidth: 900 }}>
+      <Actions handleDeleteAll={handleDeleteAll} handleAddNewItem={handleAddNewItem} />
       <TableHeader />
       <Box>
         {items.length > 0 ? (
@@ -88,26 +110,30 @@ const Items = ({ actionType = "Icons", hasMultiSelect = false }) => {
               actionType={actionType}
               hasMultiSelect={hasMultiSelect}
               itemIsDisabled={selectedItems.length > 0}
+              selectedItems={selectedItems}
             />
           ))
         ) : (
-          <Box style={{ padding: 35, margin: "auto", textAlign: "center" }}>
+          <Box style={{height: 55, display: 'flex' , justifyContent: 'center' , alignItems : 'center' }}>
             <ClearAllIcon />
           </Box>
         )}
       </Box>
 
-      <Paper className="itemsHeader" elevation={0}>
+      <Paper className="itemsHeader">
         <Grid
           sx={{
             display: "flex",
             justifyContent: "flex-end",
             paddingRight: "20px",
+            minHeight: "20px",
           }}
         >
-          <Box>
-            <Typography variant="h6"> Total Amount : 4.598.234 TL</Typography>
-          </Box>
+          {viewTotal && (
+            <Box>
+              <Typography variant="h6"> Total Amount : 4.598.234 TL</Typography>
+            </Box>
+          )}
         </Grid>
       </Paper>
       {selectedItems.length > 0 && (

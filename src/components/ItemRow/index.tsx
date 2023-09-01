@@ -67,7 +67,8 @@ const Item = ({
   itemIsDisabled,
   actionType = "Icons",
   handleMultiSelect = () => {},
-  hasMultiSelect = false
+  hasMultiSelect = false,
+  selectedItems
 }: ItemProperties) => {
   return (
     <>
@@ -81,6 +82,7 @@ const Item = ({
           actionType={actionType}
           handleMultiSelect={handleMultiSelect}
           hasMultiSelect={hasMultiSelect}
+          selectedItems={selectedItems}
         />
       {/* {isEdit ? (
         <Edit

@@ -47,12 +47,14 @@ const Display = ({
   actionType = "Icons",
   handleMultiSelect = () => {},
   hasMultiSelect = false,
+  selectedItems 
 }) => {
   const [itemValue, setItemValue] = useState(0);
   const theme = useTheme();
   const mobileDevice = useMediaQuery(theme.breakpoints.down("sm"));
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const isChecked = selectedItems.some(selectedItem => selectedItem.ID === item.ID);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -69,6 +71,7 @@ const Display = ({
       style={{
         marginBottom: mobileDevice ? "10px" : "0",
         minWidth: 900,
+        height: 55,
         display: "flex",
         alignItems: "center",
       }}
@@ -81,6 +84,7 @@ const Display = ({
             style={{ padding: "0", paddingRight: 15, marginBottom: 3 }}
             size="small"
             disableRipple
+            checked={isChecked}
           />
         )}
       </Box>
