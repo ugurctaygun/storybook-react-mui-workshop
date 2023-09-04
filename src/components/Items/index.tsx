@@ -7,6 +7,8 @@ import { useState } from "react";
 import TableHeader from "./TableHeader";
 import ClearAllIcon from "@mui/icons-material/ClearAll";
 import Actions from "./Actions";
+import { TransitionGroup } from "react-transition-group";
+import Collapse from "@mui/material/Collapse";
 
 interface ItemsType {
   /**
@@ -16,14 +18,14 @@ interface ItemsType {
   hasMultiSelect?: boolean;
 }
 
-const itemTemplate =   {
+const itemTemplate = {
   Amount: 0,
   Cost: 0,
   Description: "New item",
   ID: 0,
   Quantity: 0,
   Unit: null,
-}
+};
 
 const Items = ({
   actionType = "Icons",
@@ -57,25 +59,28 @@ const Items = ({
     },
   ]);
   const [selectedItems, setSelectedItems] = useState([]);
-  const [itemChecked,setItemChecked] = useState(false)
+  const [itemChecked, setItemChecked] = useState(false);
   const handleDeleteSelected = () => {
     const updatedItems = items.filter((item) => !selectedItems.includes(item));
     setItems(updatedItems);
     setSelectedItems([]);
   };
 
+  const handleDeleteItem = (item) => {
+    setItems(previous => previous.filter(items => items !== item));
+  }
+
   const handleDeleteAll = () => {
     setItems([]);
-  }
-  
+  };
 
   const handleAddNewItem = () => {
     const newItem = {
       ...itemTemplate,
       ID: Math.floor(Math.random() * 100),
     };
-    setItems(prevItems => [...prevItems, newItem]);
-  }
+    setItems((prevItems) => [...prevItems, newItem]);
+  };
 
   const handleMultiSelect = (passedItem: any, selected: boolean) => {
     if (selected) {
@@ -83,7 +88,7 @@ const Items = ({
         ...prevSelectedItems,
         passedItem,
       ]);
-      setItemChecked(true)
+      setItemChecked(true);
     } else {
       setSelectedItems((prevSelectedItems) =>
         prevSelectedItems.filter((item) => item !== passedItem)
@@ -93,42 +98,57 @@ const Items = ({
 
   const handleClearMultiSelect = () => {
     setSelectedItems([]);
-    setItemChecked(false)
+    setItemChecked(false);
   };
 
   return (
     <Grid style={{ minWidth: 900 }}>
-      <Actions handleDeleteAll={handleDeleteAll} handleAddNewItem={handleAddNewItem} />
+      <Actions
+        handleDeleteAll={handleDeleteAll}
+        handleAddNewItem={handleAddNewItem}
+      />
       <TableHeader />
       <Box>
-        {items.length > 0 ? (
-          items.map((item) => (
-            <Item
-              item={item}
-              key={item.ID}
-              handleMultiSelect={handleMultiSelect}
-              actionType={actionType}
-              hasMultiSelect={hasMultiSelect}
-              itemIsDisabled={selectedItems.length > 0}
-              selectedItems={selectedItems}
-            />
-          ))
-        ) : (
-          <Box style={{height: 55, display: 'flex' , justifyContent: 'center' , alignItems : 'center' }}>
-            <ClearAllIcon />
-          </Box>
-        )}
-      </Box>
-
-      <Paper className="itemsHeader">
-        <Grid
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            paddingRight: "20px",
-            minHeight: "20px",
-          }}
-        >
+        <TransitionGroup>
+          {items.length > 0 ? (
+            items.map((item) => (
+              <Collapse>
+                <Item
+                  item={item}
+                  key={item.ID}
+                  handleMultiSelect={handleMultiSelect}
+                  actionType={actionType}
+                  hasMultiSelect={hasMultiSelect}
+                  itemIsDisabled={selectedItems.length > 0}
+                  selectedItems={selectedItems}
+                  handleDeleteItem={handleDeleteItem}
+                />
+              </Collapse>
+            ))
+          ) : (
+            <Box
+              style={{
+                height: 55,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <ClearAllIcon />
+            </Box>
+          )}
+        </TransitionGroup>
+        <Paper
+        className="itemsHeader"
+        style={{
+          minHeight: 55,
+          display: "flex",
+          paddingRight: "20px",
+          justifyContent: "flex-end",
+          alignItems: "center"
+        }}
+      >
+        <Grid>
           {viewTotal && (
             <Box>
               <Typography variant="h6"> Total Amount : 4.598.234 TL</Typography>
@@ -136,7 +156,10 @@ const Items = ({
           )}
         </Grid>
       </Paper>
-      {selectedItems.length > 0 && (
+      </Box>
+
+     
+      {selectedItems.length > 0 && items.length > 0  && (
         <Paper
           elevation={5}
           style={{

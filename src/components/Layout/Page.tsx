@@ -51,15 +51,12 @@ const Page = ({
             {!disableBreadcrumbs && <BreadCrumbs />}
           </Box>
           {!disableHeader && (
-            <Box mt={2} mb={2}>
+            <Box mt={2} mb={5} pb={3} style={{borderBottom: '1px solid #e7e7e7'}}>
               <Typography gutterBottom variant="h4">
-                Title
+                {title}
               </Typography>
             </Box>
           )}
-          <Box mb={5}>
-            <hr />
-          </Box>
           <Box mb={5}>{children || "Page Content"}</Box>
         </Container>
       )}

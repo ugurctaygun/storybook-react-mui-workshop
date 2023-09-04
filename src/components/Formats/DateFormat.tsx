@@ -3,7 +3,7 @@ import moment from "moment"
 
 const DateFormat = () => {
     return (
-        <DisplayField label={'Day Month'} value={moment.utc(new Date()).local().format('LLL')} />
+        <DisplayField label={'Detailed Date'} value={moment.utc(new Date()).local().format('LLL')} />
     )
 }
 

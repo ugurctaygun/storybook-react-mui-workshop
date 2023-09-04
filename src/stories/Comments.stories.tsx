@@ -1,32 +1,36 @@
-
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import Comments from '../components/Comments';
-import Comment from '../components/Comment';
-import * as CommentStory from './Comment.stories';
+import Comments from "../components/Comments";
+import Comment from "../components/Comment";
+import * as CommentStory from "./Comment.stories";
 
 const meta = {
   component: Comments,
   title: "Layout/Comments",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  argTypes: {
+    submitByButton: { control: 'boolean'},
+    characterLimit: { control: 'boolean'},
+  },
+  tags: ["autodocs"],
 } satisfies Meta<typeof Comments>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default : Story = {
+export const Default: Story = {
   args: {
-  },
-  render: () =>  (
-    <>
-      <Comments>
-      <Comment {...CommentStory.Status.args} />
-      </Comments>
-    
-    </>
-
-  )
+    submitByButton: false,
+    characterLimit: false
+  }
 };
+
+export const ButtonSubmit: Story = {
+  args: {
+    submitByButton: true,
+    characterLimit: true
+  }
+};
+

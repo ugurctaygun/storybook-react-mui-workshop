@@ -21,6 +21,14 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     hasMultiSelect: false,
-    actionType: 'Icons'
+    actionType: 'Icons',
+    viewTotal: true
+  },
+};
+
+export const MultiSelect: Story = {
+  args: {
+    hasMultiSelect: true,
+    actionType: 'Menu'
   },
 };

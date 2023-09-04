@@ -28,7 +28,7 @@ interface itemType {
   Amount: number;
 }
 
-const options = ["None", "Atria", "Callisto"];
+const options = ["Action One", "Action Two", "Action Three"];
 
 const Display = ({
   item = {
@@ -47,7 +47,7 @@ const Display = ({
   actionType = "Icons",
   handleMultiSelect = () => {},
   hasMultiSelect = false,
-  selectedItems 
+  selectedItems = []
 }) => {
   const [itemValue, setItemValue] = useState(0);
   const theme = useTheme();
@@ -68,12 +68,17 @@ const Display = ({
   return (
     <Paper
       className="paperStyle"
+      elevation={0}
       style={{
         marginBottom: mobileDevice ? "10px" : "0",
         minWidth: 900,
         height: 55,
         display: "flex",
         alignItems: "center",
+        boxSizing: 'border-box',
+        border: '1px solid rgba(0,0,0,0.04)',
+        boxShadow: "0px 0px 0px 0px rgba(0,0,0), 0px 0px 0px 0px rgba(0,0,0), 0px 1px 1px 0px rgba(0,0,0,0.12)"
+
       }}
     >
       {" "}
@@ -246,7 +251,7 @@ const Display = ({
                 {" "}
                 <IconButton
                   disableRipple
-                  disabled={itemIsDisabled}
+                  disabled={true}
                   color={"primary"}
                   size="small"
                   style={{ display: "contents" }}
@@ -258,7 +263,7 @@ const Display = ({
                 </IconButton>
                 <IconButton
                   disableRipple
-                  disabled={itemIsDisabled}
+                  disabled={true}
                   color={"primary"}
                   size="small"
                   aria-label="Edit"
@@ -276,7 +281,7 @@ const Display = ({
                   color={"error"}
                   style={{ display: "contents" }}
                   onClick={() => {
-                    // handleDeleteItem(index);
+                    handleDeleteItem(item);
                   }}
                 >
                   <DeleteIcon fontSize={"small"} />
