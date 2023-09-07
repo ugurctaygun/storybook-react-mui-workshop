@@ -1,29 +1,51 @@
+import type { Meta, StoryObj } from "@storybook/react";
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import AppCard from '../components/AppCard';
-import AppActionCard from '../components/AppCard/AppActionCard';
+import AppCard from "../components/AppCard";
+import AppActionCard from "../components/AppCard/AppActionCard";
 
 const meta = {
   component: AppCard,
   title: "Components/Navigation/App Navigation",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  argTypes: {
+    title: { control: "text" },
+    actions: { control: "boolean" },
+    horizontal: {
+      control: "boolean",
+      if: { arg: "actions", truthy: true },
+      defaultValue: false,
+    },
+    primaryButtonColor: {
+      control: "color",
+      if: { arg: "actions", truthy: true },
+    },
+    primaryButtonText: {
+      control: "text",
+      if: { arg: "actions", truthy: true },
+    },
+    secondaryButtonText: {
+      control: "text",
+      if: { arg: "actions", truthy: true },
+    },
+  },
+  tags: ["autodocs"],
 } satisfies Meta<typeof AppCard>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default : Story = {
+export const Default: Story = {
   args: {
-    actions: false
+    actions: false,
+    horizontal: false,
   },
 };
 
-export const WithActions : Story = {
+export const WithActions: Story = {
   args: {
-    actions: true
+    actions: true,
+    horizontal: false,
   },
 };

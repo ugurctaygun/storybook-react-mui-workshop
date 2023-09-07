@@ -1,20 +1,54 @@
 import {
-  Badge,
   Box,
   Button,
   Card,
   CardActionArea,
   CardContent,
-  Grid,
   IconButton,
-  Tooltip,
   Typography,
 } from "@mui/material";
 import "../styles.css";
-import { Home, Send, Star } from "@mui/icons-material";
+import { Home, Star } from "@mui/icons-material";
 import AddIcon from "@mui/icons-material/Add";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-const AppCard = ({ title = "App Description", actions = true , icon = <Home color="primary" fontSize="large" />}) => {
+interface AppCardTypes {
+  /**
+   * Title of the app
+   */
+  title: string;
+  /**
+   * Action buttons if the app card is being used to navigate certain parts of the app
+   */
+  actions?: boolean;
+  /**
+   * Switch between horizontal and vertical card styles.
+   * Horizontal style can be used for when the button text is too long for vertical
+   */
+  horizontal?: boolean;
+  /**
+   * Custom color for the primary button
+   */
+  primaryButtonColor?: string;
+  /**
+   * Primary button text
+   */
+  primaryButtonText: string;
+  /**
+   * Secondary button text
+   */
+  secondaryButtonText: string;
+}
+
+const AppCard = ({
+  title = "App Title",
+  actions = true,
+  icon = <Home color="primary" fontSize="large" />,
+  horizontal = true,
+  primaryButtonColor = "",
+  primaryButtonText = "View List",
+  secondaryButtonText = "Create New",
+}: AppCardTypes) => {
   return (
     <>
       {!actions ? (
@@ -38,30 +72,59 @@ const AppCard = ({ title = "App Description", actions = true , icon = <Home colo
           <Card
             style={{
               position: "relative",
-              display: "flex",
-              flexDirection: "column",
               padding: "0 15px",
-              maxWidth: 210,
+              maxWidth: horizontal ? 600 : 320,
               textAlign: "center",
             }}
           >
             <CardContent
               style={{
                 display: "flex",
-                flexDirection: "column",
+                flexDirection: horizontal ? "row" : "column",
                 justifyContent: "space-between",
                 alignItems: "center",
-                minHeight: 240,
+                gap:horizontal ? 50 : 15,
+
               }}
             >
-              <Typography style={{ fontWeight: "bold", fontSize: "16px" }}>
-               {title}
-              </Typography>
-              {icon}
+              {horizontal ? (
+                <Box
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 15,
+                  }}
+                >
+                  <Typography
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "16px",
+                      marginRight: 5,
+                    }}
+                  >
+                    {title}
+                  </Typography>
+                  {icon}
+                </Box>
+              ) : (
+                <>
+                  <Typography
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "16px",
+                      marginRight: 5,
+                    }}
+                  >
+                    {title}
+                  </Typography>
+                  {icon}
+                </>
+              )}
+
               <Box>
                 <Button
-                  color="warning"
-                  variant="outlined"
+                  variant={primaryButtonColor === "" ? "outlined" : "contained"}
                   style={{
                     minWidth: 160,
                     alignContent: "center",
@@ -69,10 +132,12 @@ const AppCard = ({ title = "App Description", actions = true , icon = <Home colo
                     justifyContent: "space-between",
                     paddingLeft: 15,
                     marginBottom: 15,
+                    background: primaryButtonColor,
+                    width: '100%'
                   }}
-                  endIcon={<Send />}
+                  endIcon={<ArrowForwardIosIcon style={{ fontSize: 16 }} />}
                 >
-                  <Typography variant="h6">View List</Typography>
+                  <Typography variant="h6">{primaryButtonText}</Typography>
                 </Button>
                 <Button
                   style={{
@@ -84,7 +149,7 @@ const AppCard = ({ title = "App Description", actions = true , icon = <Home colo
                   }}
                   endIcon={<AddIcon />}
                 >
-                  <Typography variant="h6">Create New</Typography>
+                  <Typography variant="h6">{secondaryButtonText}</Typography>
                 </Button>
               </Box>
             </CardContent>

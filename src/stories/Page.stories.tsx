@@ -18,27 +18,6 @@ const meta = {
   parameters: {
     layout: "fullscreen",
   },
-  // argTypes: {
-  //   columns: { control: "inline-radio", options: [1, 2] },
-  //   columnOneCards: {
-  //     control: "inline-check",
-  //     if: { arg: "columns", eq: 2 },
-  //     options: ["Information Card", "Pre-Form", "Pool", "Comments"],
-  //   },
-  //   arrow: {
-  //     options: arrows,
-  //     mapping: arrows,
-  //     control: {
-  //       type: "select",
-  //       labels: {
-  //         ArrowUp: "Up",
-  //         ArrowDown: "Down",
-  //         ArrowLeft: "Left",
-  //         ArrowRight: "Right",
-  //       },
-  //     },
-  //   },
-  // },
 } satisfies Meta<typeof Page>;
 
 export default meta;
@@ -104,9 +83,6 @@ export const Default: Story = {
 export const MultiAppPage: Story = {
   args: {
     title: "Multi App Page",
-    disableHeader: false,
-    disableBreadcrumbs: false,
-    loading: false,
   },
   render: (args) => (
     <Page
