@@ -5,7 +5,7 @@ import TabNavigator from '../components/Navigation/TabNavigator';
 
 const meta = {
   component: TabNavigator,
-  title: "Components/Navigation/Tab Navigator",
+  title: "Components/Navigation/Tab Navigation",
   parameters: {
     layout: 'centered',
   },

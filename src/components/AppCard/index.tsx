@@ -75,6 +75,7 @@ const AppCard = ({
               padding: "0 15px",
               maxWidth: horizontal ? 600 : 320,
               textAlign: "center",
+              minWidth: horizontal ? 400 : 280,
             }}
           >
             <CardContent

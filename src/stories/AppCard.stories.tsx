@@ -15,7 +15,7 @@ const meta = {
     horizontal: {
       control: "boolean",
       if: { arg: "actions", truthy: true },
-      defaultValue: false,
+      value: false,
     },
     primaryButtonColor: {
       control: "color",

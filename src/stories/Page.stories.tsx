@@ -6,9 +6,9 @@ import Comments from "../components/Comments";
 import Comment from "../components/Comment";
 import Items from "../components/Items";
 import AppCard from "../components/AppCard";
-import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
-import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
-import AirlineSeatReclineExtraIcon from '@mui/icons-material/AirlineSeatReclineExtra';
+import AirplanemodeActiveIcon from "@mui/icons-material/AirplanemodeActive";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import AirlineSeatReclineExtraIcon from "@mui/icons-material/AirlineSeatReclineExtra";
 
 const arrows = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
 
@@ -81,23 +81,63 @@ export const Default: Story = {
 // };
 
 export const MultiAppPage: Story = {
+  argTypes: {
+    disableHeader: { control: false },
+    disableBreadcrumbs: { control: false },
+    loading: { control: false },
+    config: { control: "object" },
+    horizontal: { control: "boolean" },
+  },
   args: {
     title: "Multi App Page",
+    horizontal: false,
+    config: [
+      {
+        title: "option 1",
+        actions: true,
+        primaryButtonText: "view list",
+        secondaryButtonText: "create new package",
+      },
+      {
+        title: "option 2",
+        actions: true,
+        primaryButtonText: "view list",
+        secondaryButtonText: "create new package",
+      },
+      {
+        title: "option 3",
+        actions: true,
+        primaryButtonText: "view list",
+        secondaryButtonText: "create new package",
+      },
+    ],
   },
   render: (args) => (
     <Page
       {...args}
       children={
-        <Grid container justifyContent={"center"} spacing={6}>
-          <Grid item>
-            <AppCard actions={true} title="International Travel Expense" icon={<AirplanemodeActiveIcon color="primary" fontSize="large" />} />
-          </Grid>
-          <Grid item>
-            <AppCard actions={true} title="Domestic Travel Expense" icon={<DirectionsCarIcon  color="primary" fontSize="large"  />} />
-          </Grid>{" "}
-          <Grid item>
-            <AppCard actions={true} title="Intra City Travel Expense" icon={<AirlineSeatReclineExtraIcon color="primary" fontSize="large" />}/>
-          </Grid>
+        <Grid
+          container
+          justifyContent={"center"}
+          style={{
+            maxWidth: 1000,
+            margin: "-40px auto",
+            flexDirection: args.horizontal ? "column" : "row",
+            alignItems: 'center'
+          }}
+          spacing={4}
+        >
+          {args.config?.map((item) => (
+            <Grid item>
+              <AppCard
+                {...item}
+                horizontal={args.horizontal}
+                icon={
+                  <AirplanemodeActiveIcon color="primary" fontSize="large" />
+                }
+              />
+            </Grid>
+          ))}
         </Grid>
       }
     ></Page>
