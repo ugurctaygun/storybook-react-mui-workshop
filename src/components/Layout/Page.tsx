@@ -29,8 +29,6 @@ const Page = ({
   ...rest
 }): PageProps => {
 
-  console.log(rest)
-
   return (
     <>
       <title>{title}</title>

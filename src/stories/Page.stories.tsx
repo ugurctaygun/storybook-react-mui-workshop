@@ -32,80 +32,35 @@ export const Default: Story = {
   },
 };
 
-// export const DetailPage: Story = {
-//   argTypes: {
-//     mainCards: {
-//       control: "inline-check",
-//       options: [
-//         "Form Section",
-//         "File Upload",
-//         "Items",
-//         "Form Section",
-//         "File Upload",
-//         "Items",
-//         "Comments",
-//       ],
-//     },
-//   },
-//   args: {
-//     title: "Detail Page",
-//     disableHeader: false,
-//     disableBreadcrumbs: false,
-//     loading: false,
-//     mainCards: [],
-//   },
-//   render: (args) => (
-//     <Page
-//       {...args}
-//       children={
-//         <Grid container spacing={2}>
-//           <Grid item sm={4}>
-//             {args.mainCards.includes("Comments") && (
-//               <Comments>
-//                 <Comment UseChipToDisplayComment={true} isEditAble={false} Comment="Status" />
-//               </Comments>
-//             )}
-//           </Grid>
-//           <Grid item sm={8}>
-//           {args.mainCards.includes("Form Section") && (
-//              <Card style={{padding: 25}}>
-//               <Typography>Form Section</Typography>
-//               <TextField label='test'/>
-//              </Card>
-//             )}
-//           </Grid>
-//         </Grid>
-//       }
-//     ></Page>
-//   ),
-// };
 
 export const MultiAppPage: Story = {
   argTypes: {
     disableHeader: { control: false },
     disableBreadcrumbs: { control: false },
     loading: { control: false },
+    actions: { control: "boolean" },
     config: { control: "object" },
     horizontal: { control: "boolean" },
   },
   args: {
     title: "Multi App Page",
     horizontal: false,
+    actions: true,
     config: [
       {
-        title: "option 1",
+        title: "First App Title",
         actions: true,
         primaryButtonText: "view list",
         secondaryButtonText: "create new package",
       },
       {
-        title: "option 2",
+        title: "Second App Title",
         actions: true,
         primaryButtonText: "view list",
         secondaryButtonText: "create new package",
       },
       {
-        title: "option 3",
+        title: "Third App Title",
         actions: true,
         primaryButtonText: "view list",
         secondaryButtonText: "create new package",
@@ -123,7 +78,7 @@ export const MultiAppPage: Story = {
             maxWidth: 1000,
             margin: "-40px auto",
             flexDirection: args.horizontal ? "column" : "row",
-            alignItems: 'center'
+            alignItems: "center",
           }}
           spacing={4}
         >
@@ -131,6 +86,7 @@ export const MultiAppPage: Story = {
             <Grid item>
               <AppCard
                 {...item}
+                actions={args.actions}
                 horizontal={args.horizontal}
                 icon={
                   <AirplanemodeActiveIcon color="primary" fontSize="large" />

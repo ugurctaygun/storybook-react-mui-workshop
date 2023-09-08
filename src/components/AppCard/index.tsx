@@ -73,9 +73,9 @@ const AppCard = ({
             style={{
               position: "relative",
               padding: "0 15px",
-              maxWidth: horizontal ? 600 : 320,
+              maxWidth: horizontal ? 480 : 320,
               textAlign: "center",
-              minWidth: horizontal ? 400 : 280,
+              minWidth: horizontal ? 480 : 280,
             }}
           >
             <CardContent
@@ -84,7 +84,7 @@ const AppCard = ({
                 flexDirection: horizontal ? "row" : "column",
                 justifyContent: "space-between",
                 alignItems: "center",
-                gap:horizontal ? 50 : 15,
+                gap:15,
 
               }}
             >
@@ -95,6 +95,7 @@ const AppCard = ({
                     flexDirection: "column",
                     alignItems: "center",
                     gap: 15,
+                    maxWidth: 120
                   }}
                 >
                   <Typography
@@ -102,6 +103,7 @@ const AppCard = ({
                       fontWeight: "bold",
                       fontSize: "16px",
                       marginRight: 5,
+                      wordBreak: 'break-word'
                     }}
                   >
                     {title}
@@ -115,6 +117,7 @@ const AppCard = ({
                       fontWeight: "bold",
                       fontSize: "16px",
                       marginRight: 5,
+                
                     }}
                   >
                     {title}
