@@ -44,32 +44,31 @@ const Steps = ({ currentStep = 0, stepStyle = "Button" }: StepperProps) => {
 
   return (
     <Grid>
- <Card>
-      <CardContent>
-        <Box style={{ minWidth: "500px" }}>
-              <Stepper
-                variant="outlined"
-                alternativeLabel
-                nonLinear
-                activeStep={currentStep}
-              >
-                {stepPath.map((item, index) => {
-                  return (
-                    <Step key={index} completed={item.completed}>
-                      {stepStyle === "Button" ? (
-                        <StepButton>{item.StepName}</StepButton>
-                      ) : (
-                        <StepLabel>{item.StepName}</StepLabel>
-                      )}
-                    </Step>
-                  );
-                })}
-              </Stepper>
-        </Box>
-      </CardContent>
-    </Card>
+      <Card>
+        <CardContent>
+          <Box style={{}}>
+            <Stepper
+              variant="outlined"
+              alternativeLabel
+              nonLinear
+              activeStep={currentStep}
+            >
+              {stepPath.map((item, index) => {
+                return (
+                  <Step key={index} completed={item.completed}>
+                    {stepStyle === "Button" ? (
+                      <StepButton>{item.StepName}</StepButton>
+                    ) : (
+                      <StepLabel>{item.StepName}</StepLabel>
+                    )}
+                  </Step>
+                );
+              })}
+            </Stepper>
+          </Box>
+        </CardContent>
+      </Card>
     </Grid>
-   
   );
 };
 

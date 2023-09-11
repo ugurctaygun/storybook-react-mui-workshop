@@ -22,28 +22,35 @@ const FormSection = ({
       type: "textfield",
       fullWidth: true,
       multiline: true,
-      line: 4,
+      sequence: 4,
     },
     {
       title: "Options",
       type: "autocomplete",
       fullWidth: false,
       multiline: false,
-      line: 2,
+      sequence: 2,
+    },
+    {
+      title: "Options2",
+      type: "autocomplete",
+      fullWidth: false,
+      multiline: false,
+      sequence: 2,
     },
     {
       title: "Date",
       type: "datepicker",
       fullWidth: false,
       multiline: false,
-      line: 3,
+      sequence: 3,
     },
     {
       title: "Amount",
-      type: "currency",
+      type: "textfield",
       fullWidth: false,
       multiline: false,
-      line: 1,
+      sequence: 1,
     },
   ],
 }) => {
@@ -57,6 +64,7 @@ const FormSection = ({
             <TextField
               label={field.title}
               multiline={field.multiline}
+              rows={field.multiline ? 3 : 1}
               style={{ width: "100%" }}
             />
           </Grid>
@@ -97,7 +105,7 @@ const FormSection = ({
   return (
     <Grid>
       <Card>
-        <CardHeader title={'<' + formTitle} />
+        <CardHeader title={formTitle} />
         <CardContent>
           <Grid container spacing={2}>
             {formData.map((item) => renderFormFields(item))}

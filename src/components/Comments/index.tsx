@@ -56,7 +56,7 @@ const Comments = ({
     setAllComments((previous) => [...previous, commentToAdd]);
   };
   return (
-    <Grid xs={12} style={{ minWidth: 500, paddingBottom: 25 }}>
+    <Grid xs={12} style={{ paddingBottom: 25 }}>
       <Box mb={2}>
         <Card>
           <CardHeader title={"Comments"} />
