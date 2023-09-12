@@ -72,7 +72,7 @@ const Comment = ({
         </Avatar>
       </Grid>
 
-      <Grid item xs={12} style={{ }}>
+      <Grid item xs={12} style={{minWidth: 220 }}>
         <Paper variant="outlined">
           <Box p={2}>
             <Grid container direction="column" spacing={2}>

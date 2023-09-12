@@ -10,7 +10,6 @@ const meta = {
   },
   argTypes: {
   },
-  tags: ["autodocs"],
 } satisfies Meta<typeof Expense>;
 
 export default meta;

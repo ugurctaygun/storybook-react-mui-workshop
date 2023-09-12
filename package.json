@@ -10,9 +10,9 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build && touch storybook-static/.nojekyll",
+    "build-storybook": "storybook build",
     "predeploy": "npm run build-storybook",
-    "deploy-storybook": "gh-pages -d storybook-static"
+    "deploy-storybook": "touch storybook-static/.nojekyll && gh-pages -d storybook-static"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",

@@ -79,7 +79,7 @@ export const Button = ({
       case "add":
         return (
           <Fab aria-label="Add" variant="extended" color={color}>
-            <AddIcon /> ADD NEW
+            <AddIcon /> {label}
           </Fab>
         );
       case "group":

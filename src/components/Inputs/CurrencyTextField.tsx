@@ -1,43 +1,4 @@
-
-import type { Meta, StoryObj } from '@storybook/react';
-
-import TextField from '../components/Inputs/TextField';
-import CurrencyTextField from '../components/Inputs/CurrencyTextField';
-
-const meta = {
-  component: TextField,
-  title: "Components/Inputs/Text Field",
-  tags: ["autodocs"],
-  parameters: {
-    layout: 'centered',
-  },
-} satisfies Meta<typeof TextField>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Default : Story = {
-  args: {
-    label: "Default",
-    disabled: false,
-    value: '',
-    fullWidth: false,
-    inputProps: { maxLength: 50 },
-  },
-};
-
-export const Currency : Story = {
-  args: {
-    label: "Default",
-    disabled: false,
-    value: '',
-    fullWidth: false,
-    inputProps: { maxLength: 50 },
-  },
-  parameters: {
-    docs: {
-      source: {
-        code: `import * as React from 'react';
+import * as React from 'react';
 import { NumericFormat, NumericFormatProps } from 'react-number-format';
 import TextField from '@mui/material/TextField';
 
@@ -70,7 +31,7 @@ const NumericFormatCustom = React.forwardRef<NumericFormatProps>(
     numberformat: string;
   }
   
-  const CurrencyTextField = () => {
+ const CurrencyTextField = () => {
     const [values, setValues] = React.useState<State>({
       textmask: '(100) 000-0000',
       numberformat: '1320',
@@ -98,19 +59,4 @@ const NumericFormatCustom = React.forwardRef<NumericFormatProps>(
     );
   }
 
-  export default CurrencyTextField`,
-      },
-    },
-  },
-  
-  render: (args) => <CurrencyTextField {...args}/>
-};
-
-export const MultiValue : Story = {
-  args: {
-    label: "First Value",
-    disabled: false,
-    value: '',
-    textAdornment: 'Second Value',
-  },
-};
+  export default CurrencyTextField

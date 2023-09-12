@@ -35,11 +35,7 @@ const Steps = ({ currentStep = 0, stepStyle = "Button" }: StepperProps) => {
     {
       StepName: "Third Step",
       completed: false,
-    },
-    {
-      StepName: "Fourth Step",
-      completed: false,
-    },
+    }
   ];
 
   return (
