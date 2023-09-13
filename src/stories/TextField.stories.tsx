@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import TextField from '../components/Inputs/TextField';
 import CurrencyTextField from '../components/Inputs/CurrencyTextField';
+import EmailInput from '../components/Inputs/EmailInput';
 
 const meta = {
   component: TextField,
@@ -105,6 +106,53 @@ const NumericFormatCustom = React.forwardRef<NumericFormatProps>(
   
   render: (args) => <CurrencyTextField {...args}/>
 };
+
+export const Email : Story = {
+  
+  args: {
+    label: "First Value",
+    disabled: false,
+    value: '',
+    textAdornment: 'Second Value',
+  },
+  parameters: {
+    title: 'E-Mail',
+    docs: {
+      source: {
+        code: `import { TextField } from "@mui/material";
+import { useState } from "react";
+
+const EmailInput = () => {
+  const [value, setValue] = useState("");
+  const [isValid, setIsValid] = useState(false);
+
+  const regex =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  const handleChange = (data) => {
+    setValue(data);
+    setIsValid(regex.test(data));
+  };
+
+  return (
+    <TextField
+      label="E-mail Input"
+      value={value}
+      type="email"
+      error={!isValid}
+      helperText={!isValid && "Please enter email format"}
+      onChange={(event) => handleChange(event?.target.value)}
+    />
+  );
+};
+
+export default EmailInput;`,
+      },
+    },
+  },
+  render: (args) => <EmailInput {...args}/>
+};
+
 
 export const MultiValue : Story = {
   args: {
