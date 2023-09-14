@@ -1,4 +1,4 @@
-import React, { FC, ReactComponentElement, useEffect } from "react";
+import React, { FC, JSX, ReactComponentElement, useEffect } from "react";
 import { Typography, Container, Box } from "@mui/material";
 import BigBang from "../Animations/BigBang";
 import BreadCrumbs from "../BreadCrumbs";
@@ -17,7 +17,7 @@ interface PageProps {
    */
   disableHeader?: Boolean;
   loading?: Boolean;
-  children:any;
+  children: JSX.Element;
 }
 
 const Page = ({

@@ -75,7 +75,7 @@ const AppCard = ({
               padding: "0 15px",
               maxWidth: horizontal ? 480 : 320,
               textAlign: "center",
-              minWidth: horizontal ? 480 : 280,
+              minWidth: horizontal ? 380 : 280,
             }}
           >
             <CardContent
@@ -95,7 +95,7 @@ const AppCard = ({
                     flexDirection: "column",
                     alignItems: "center",
                     gap: 15,
-                    maxWidth: 120
+                    maxWidth: 110
                   }}
                 >
                   <Typography
