@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Expense from "../views/expense";
+import Expense from "../views/Expense";
 
 const meta = {
   component: Expense,
@@ -8,8 +8,7 @@ const meta = {
   parameters: {
     layout: "fullscreen",
   },
-  argTypes: {
-  },
+  argTypes: {},
 } satisfies Meta<typeof Expense>;
 
 export default meta;
@@ -17,14 +16,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    pageConfig :[
+    config: [
       [
         {
           title: "Advance Form",
           type: "FormSection",
           formConfig: [
             {
-              title: "Options2",
+              title: "Expense Type",
               type: "autocomplete",
               fullWidth: false,
               multiline: false,
@@ -55,11 +54,11 @@ export const Default: Story = {
       ],
       [
         {
-          title: "Advance Form",
+          title: "Expense Item",
           type: "FormSection",
           formConfig: [
             {
-              title: "Options2",
+              title: "Expense Reason",
               type: "autocomplete",
               fullWidth: false,
               multiline: false,
@@ -81,7 +80,35 @@ export const Default: Story = {
             },
           ],
         },
+        {
+          title: "Expense Item",
+          type: "FormSection",
+          formConfig: [
+            {
+              title: "Expense Reason",
+              type: "autocomplete",
+              fullWidth: false,
+              multiline: false,
+              sequence: 2,
+            },
+            {
+              title: "Date",
+              type: "datepicker",
+              fullWidth: false,
+              multiline: false,
+              sequence: 3,
+            },
+            {
+              title: "Amount",
+              type: "textfield",
+              fullWidth: false,
+              multiline: false,
+              sequence: 1,
+            },
+          ],
+        }
       ],
-    ]
+      
+    ],
   },
 };
