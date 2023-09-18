@@ -1,0 +1,2 @@
+import{r as n,a as c}from"./index-8ee6c85d.js";function o(e,t){typeof e=="function"?e(t):e&&(e.current=t)}const s=typeof window<"u"?n.useLayoutEffect:n.useEffect,r=s;function f(e){const t=n.useRef(e);return r(()=>{t.current=e}),n.useCallback((...u)=>(0,t.current)(...u),[])}function i(...e){return n.useMemo(()=>e.every(t=>t==null)?null:t=>{e.forEach(u=>{o(u,t)})},e)}const l=c.createContext(null);export{l as T,r as a,f as b,o as s,i as u};
+//# sourceMappingURL=TransitionGroupContext-03ffa606.js.map
