@@ -17,7 +17,7 @@ interface PageProps {
    */
   disableHeader?: Boolean;
   loading?: Boolean;
-  children: JSX.Element;
+  children: any;
 }
 
 const Page = ({
@@ -27,7 +27,7 @@ const Page = ({
   disableBreadcrumbs = false,
   children = null,
   ...rest
-}): PageProps => {
+}) => {
 
   return (
     <>
