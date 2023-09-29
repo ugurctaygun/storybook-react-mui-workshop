@@ -1,0 +1,2 @@
+import{j as a}from"./jsx-runtime-f6d73c06.js";import{D as r}from"./index-ef31121e.js";import{G as e}from"./Grid-017ed63d.js";import{C as s,a as l}from"./CardContent-e906e295.js";const n=()=>a.jsx(e,{children:a.jsx(s,{children:a.jsxs(l,{style:{display:"grid",gridTemplateColumns:"50% 50%"},children:[a.jsx(r,{label:"Requestor",value:"User Name"}),a.jsx(r,{label:"Date",value:"12.12.2022"}),a.jsx(r,{label:"Total Amount",value:"TL 300"}),a.jsx(r,{label:"Status",value:"Waiting For Approval"})]})})});export{n as I};
+//# sourceMappingURL=index-3d6d33f3.js.map
