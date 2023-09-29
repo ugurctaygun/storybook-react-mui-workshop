@@ -15,8 +15,8 @@ const Pool = ({
   ],
 }) => {
   return (
-    <Grid container>
-      <Card>
+    <Grid container >
+      <Card style={{width: '100%'}}>
         <CardHeader title={title} />
         <CardContent>
             {options.map((item, index) => (

@@ -59,8 +59,7 @@ export const Default: Story = {
           title: "Stepper",
           type: "Stepper",
         },
-        { title: "Comments", type: "Comments" },
-        { title: "Pool", type: "Pool" },
+        { title: "Comments", type: "Comments" }
       ],
     ],
   },

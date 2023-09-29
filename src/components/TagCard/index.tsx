@@ -4,9 +4,8 @@ import DisplayField from "../DisplayField";
 const TagCard = ({title = 'Purchase Order' , options = [{name: 'Company Name' , value: 'Arcelik'},{name: 'Company Code' , value: '046'}]}) => {
     return(
         <Grid container>
-            <Card  style={{width: '100%'}}>
-                <CardHeader title='Information Card' />
-                <CardContent style={{display:'grid' , gridTemplateColumns: '1fr 1fr'}}>
+            <Card style={{width: '100%' }}>
+                <CardContent style={{display:'grid' , gridTemplateColumns: '1fr 1fr', padding: 0}}>
                     {options.map((item,index) => (
                         <DisplayField key={index} label={item.name} value={item.value} />
                     ))}

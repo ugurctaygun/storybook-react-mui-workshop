@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import Comment from "../components/Comment";
 import {codeSnippet} from "../components/Comment/snippet";
+import { Grid } from "@mui/material";
 
 const meta = {
   component: Comment,
@@ -28,6 +29,11 @@ export const Default: Story = {
     Comment: "Comment Text",
     CommentedBy: "User Name",
   },
+  render: (args) => (
+    <Grid style={{minWidth: 550}}>
+     <Comment {...args} />
+    </Grid>
+   ),
 };
 
 export const Editable: Story = {
@@ -38,6 +44,11 @@ export const Editable: Story = {
     Comment: "Click to edit",
     CommentedBy: "User Name",
   },
+  render: (args) => (
+    <Grid style={{minWidth: 550}}>
+     <Comment {...args} />
+    </Grid>
+   ),
 };
 
 export const Status: Story = {
@@ -48,4 +59,9 @@ export const Status: Story = {
     Comment: "Status",
     CommentedBy: "User Name",
   },
+  render: (args) => (
+    <Grid style={{minWidth: 550}}>
+     <Comment {...args} />
+    </Grid>
+   ),
 };

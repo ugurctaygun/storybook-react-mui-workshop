@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import Comments from "../components/Comments";
-import Comment from "../components/Comment";
-import * as CommentStory from "./Comment.stories";
+import { Grid } from "@mui/material";
 
 const meta = {
   component: Comments,
@@ -24,13 +22,23 @@ export const Default: Story = {
   args: {
     submitByButton: false,
     characterLimit: false
-  }
+  },
+  render: (args) => (
+   <Grid style={{minWidth: 550}}>
+    <Comments {...args} />
+   </Grid>
+  ),
 };
 
 export const ButtonSubmit: Story = {
   args: {
     submitByButton: true,
     characterLimit: true
-  }
+  },
+  render: (args) => (
+    <Grid style={{minWidth: 550}}>
+     <Comments {...args} />
+    </Grid>
+   ),
 };
 
